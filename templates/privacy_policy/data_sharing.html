@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section class="data-sharing-section">
+        <h2>Data Sharing and Third Parties</h2>
+        <p>
+            At TALKS, we understand that the privacy and security of your personal data are of utmost importance. While we strive to protect your information, there are certain scenarios where we may share your data with third parties. This sharing occurs only under specific circumstances where it is necessary for providing our services or complying with legal obligations. Below are the key situations where data sharing may take place:
+        </p>
+
+        <h3>1. With Your Consent</h3>
+        <p>
+            We prioritize transparency and will always seek your explicit consent before sharing your data. This can occur when you link your TALKS account with third-party services such as social media platforms or other integrated applications. In such cases, we may share certain personal information with those third-party services, as per your instructions and the terms of those services.
+        </p>
+
+        <h3>2. Service Providers</h3>
+        <p>
+            To offer you a seamless and enhanced experience, TALKS partners with trusted third-party service providers. These providers help us operate, maintain, and improve our platform. The data shared with these providers is limited to what is necessary to perform their services and is subject to strict confidentiality agreements. The categories of service providers with whom we may share your data include:
+        </p>
+        <ul>
+            <li><strong>Hosting Providers:</strong> Companies that provide the infrastructure and technical support needed to run the platform efficiently.</li>
+            <li><strong>Analytics Providers:</strong> Firms that help us analyze user behavior, preferences, and trends to improve our platform’s performance.</li>
+            <li><strong>Customer Support Tools:</strong> Service providers that assist with customer service operations, such as helpdesk and ticketing systems.</li>
+        </ul>
+        <p>
+            We ensure that all our partners and providers comply with strict security standards to safeguard your data.
+        </p>
+
+        <h3>3. Legal Obligations</h3>
+        <p>
+            TALKS is committed to complying with applicable laws and regulations. In some cases, we may be required to share your data in response to legal requests, such as subpoenas, court orders, or to protect the rights, property, or safety of TALKS, our users, or others. We will only disclose your data to law enforcement or regulatory bodies when we believe it is legally necessary or in good faith to do so.
+        </p>
+
+        <h3>4. Mergers, Acquisitions, and Corporate Changes</h3>
+        <p>
+            In the event that TALKS undergoes a merger, acquisition, or asset sale, your data may be transferred to the new ownership entity as part of the transaction. We will notify you via email or through our platform if such a transfer of your data occurs, ensuring that your data is always handled in accordance with the privacy policy at the time of the transaction.
+        </p>
+
+        <h3>5. Third-Party Advertisers</h3>
+        <p>
+            In some cases, we may share aggregated, anonymized data with third-party advertisers to help them serve you more relevant advertisements on external sites. These advertisers do not have access to your personally identifiable information but may use cookies or similar technologies to track your browsing activity across different websites.
+        </p>
+
+        <h3>6. Protecting Our Rights</h3>
+        <p>
+            We may share your data to prevent fraudulent activities or unauthorized access to our platform. In situations where there is a concern about potential harm to TALKS, its users, or its partners, your data may be shared to ensure compliance with our terms of service and protect the integrity of the platform.
+        </p>
+
+        <p>
+            TALKS takes every measure to ensure that data sharing is done responsibly, securely, and in line with privacy regulations. If you have any questions regarding how your data is shared or wish to review your data-sharing preferences, please don’t hesitate to contact us.
+        </p>
+
+        <p>
+            For more information on our data protection practices, please refer to the 
+            <a href="{{ url_for('privacy_policy') }}">Privacy Policy Overview</a>.
+        </p>
+    </section>
+
+    <style>
+.data-sharing-section {
+    font-family: Arial, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.data-sharing-section h2 {
+    font-size: 28px;
+    color: #28a745;
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.data-sharing-section h3 {
+    font-size: 22px;
+    color: #28a745;
+    text-transform: uppercase;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.data-sharing-section p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.data-sharing-section ul {
+    padding-left: 20px;
+    font-size: 16px;
+    color: #333;
+}
+
+.data-sharing-section ul li {
+    margin-bottom: 10px;
+}
+
+.data-sharing-section a {
+    color: #16a085;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.data-sharing-section a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .data-sharing-section {
+        max-width: 90%;
+        padding: 20px;
+    }
+
+    .data-sharing-section h2 {
+        font-size: 24px;
+    }
+
+    .data-sharing-section h3 {
+        font-size: 18px;
+    }
+
+    .data-sharing-section p {
+        font-size: 14px;
+    }
+
+    .data-sharing-section ul {
+        font-size: 14px;
+    }
+
+    .data-sharing-section ul li {
+        margin-bottom: 8px;
+    }
+
+    .data-sharing-section a {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .data-sharing-section {
+        max-width: 95%;
+        text-wrap: wrap;
+        padding: 15px;
+    }
+
+    .data-sharing-section h2 {
+        font-size: 20px;
+    }
+
+    .data-sharing-section h3 {
+        font-size: 16px;
+    }
+
+    .data-sharing-section p {
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    .data-sharing-section ul {
+        font-size: 13px;
+    }
+
+    .data-sharing-section ul li {
+        margin-bottom: 6px;
+    }
+
+    .data-sharing-section a {
+        font-size: 13px;
+    }
+}
+
+    </style>
+{% endblock %}

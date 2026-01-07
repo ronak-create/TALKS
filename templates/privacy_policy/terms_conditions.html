@@ -1,0 +1,236 @@
+{% extends "base.html" %} {% block content %}
+<section class="terms-and-conditions">
+  <h2>Terms and Conditions</h2>
+  <p>
+    Welcome to TALKS! By accessing or using our platform, you agree to comply
+    with and be bound by these Terms and Conditions. These terms outline the
+    rules and guidelines for using the services offered by TALKS. Please read
+    them carefully before continuing to use the platform. If you do not agree to
+    these terms, you should immediately stop using the platform and refrain from
+    accessing any content.
+  </p>
+
+  <h3>1. Acceptance of Terms</h3>
+  <p>
+    By creating an account on TALKS, you confirm that you accept and agree to be
+    bound by these terms. We reserve the right to update or modify these Terms
+    and Conditions at any time without prior notice. It is your responsibility
+    to review these terms periodically to ensure that you are aware of any
+    changes. Continued use of the platform after any such modifications
+    signifies your acceptance of those changes.
+  </p>
+
+  <h3>2. User Responsibilities</h3>
+  <p>
+    As a user of TALKS, you are responsible for the content you post and share.
+    You must ensure that all content aligns with our community guidelines and
+    does not violate any laws or regulations. You must refrain from posting
+    content that is harmful, offensive, illegal, or otherwise inappropriate.
+    This includes but is not limited to:
+  </p>
+  <ul>
+    <li>
+      <strong>Offensive or Illegal Content:</strong> Any material that promotes
+      illegal activities, violence, or harmful behavior is strictly prohibited.
+    </li>
+    <li>
+      <strong>Spam or Unauthorized Advertising:</strong> Users may not use the
+      platform to post unsolicited advertisements, promotions, or spam of any
+      kind.
+    </li>
+    <li>
+      <strong>Hate Speech or Harassment:</strong> Any content that promotes hate
+      speech, harassment, or discrimination against others will result in
+      account termination.
+    </li>
+  </ul>
+  <p>
+    Failure to comply with these responsibilities could result in the suspension
+    or permanent termination of your account. We take these matters seriously to
+    ensure the safety and respect of all our users.
+  </p>
+
+  <h3>3. Intellectual Property</h3>
+  <p>
+    The content and materials provided by TALKS, including but not limited to
+    text, graphics, images, logos, videos, and software, are owned by TALKS or
+    its licensors and are protected by copyright and intellectual property laws.
+    Users are granted a limited, non-exclusive, non-transferable license to
+    access and use the platform for personal and non-commercial purposes only.
+    Reproduction, distribution, or any form of commercial use of TALKS’ content
+    without explicit written consent is strictly prohibited.
+  </p>
+  <p>
+    We encourage creativity and content creation; however, any intellectual
+    property created by users that is shared or uploaded on the platform remains
+    the property of the user, but TALKS reserves the right to use such content
+    for promotional purposes in accordance with our privacy policy.
+  </p>
+
+  <h3>4. Account Termination</h3>
+  <p>
+    TALKS reserves the right to suspend or terminate any account that violates
+    these Terms and Conditions, including accounts that engage in illegal
+    activities, abuse the platform, or violate our community guidelines. We may
+    also terminate your account for prolonged inactivity or failure to comply
+    with any legal obligations or requirements set by TALKS. We aim to maintain
+    a safe and respectful environment, and thus, all accounts must comply with
+    the policies and guidelines in place.
+  </p>
+  <p>
+    If your account is terminated, you will lose access to all content
+    associated with that account, including any data, posts, or messages. If you
+    wish to appeal a decision made regarding your account, you may contact our
+    support team through the platform's help section.
+  </p>
+
+  <p>
+    <a href="{{ url_for('privacy_policy') }}"
+      >Back to Privacy Policy Overview</a
+    >
+  </p>
+</section>
+
+<style>
+.terms-and-conditions {
+    font-family: "Arial", sans-serif;
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 40px;
+    line-height: 1.6;
+    background-color: #f4f4f9;
+}
+
+.terms-and-conditions h2 {
+    color: #28a745;
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.terms-and-conditions p {
+    font-size: 17px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.terms-and-conditions h3 {
+    color: #28a745;
+    font-size: 24px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.terms-and-conditions ul {
+    padding-left: 20px;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.terms-and-conditions ul li {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.terms-and-conditions a {
+    color: #28a745;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.terms-and-conditions a:hover {
+    color: #218838;
+    text-decoration: underline;
+}
+
+.terms-and-conditions section {
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .terms-and-conditions {
+        padding: 20px;
+        max-width: 90%;
+    }
+
+    .terms-and-conditions h2 {
+        font-size: 28px;
+    }
+
+    .terms-and-conditions h3 {
+        font-size: 20px;
+    }
+
+    .terms-and-conditions p {
+        font-size: 15px;
+    }
+
+    .terms-and-conditions ul {
+        font-size: 15px;
+    }
+
+    .terms-and-conditions ul li {
+        margin-bottom: 8px;
+    }
+
+    .terms-and-conditions a {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .terms-and-conditions {
+        padding: 15px;
+        max-width: 95%;
+        text-wrap: wrap;
+        padding-bottom: 40px;
+    }
+
+    .terms-and-conditions h2 {
+        font-size: 24px;
+    }
+
+    .terms-and-conditions h3 {
+        font-size: 18px;
+    }
+
+    .terms-and-conditions p {
+      padding: 10px;
+        font-size: 14px;
+    }
+
+    .terms-and-conditions ul {
+        font-size: 14px;
+    }
+
+    .terms-and-conditions ul li {
+        margin-bottom: 6px;
+    }
+
+    .terms-and-conditions a {
+        font-size: 14px;
+    }
+}
+
+</style>
+{% endblock %}

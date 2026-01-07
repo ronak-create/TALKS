@@ -1,0 +1,40 @@
+<!-- templates/create_post.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../static/images/icon.png" type="image/x-icon" />
+    <title>TALKS</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="container">
+        <h1>Create New Post</h1>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <section class="form-container">
+        <form action="{{ url_for('create_post') }}" method="POST">
+          <textarea
+            name="content"
+            placeholder="Write your post..."
+            required
+          ></textarea>
+          <button type="submit" class="btn">Post</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2024 Social Media Platform</p>
+      </div>
+    </footer>
+  </body>
+</html>

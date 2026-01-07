@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Posts for #{{ tag }}</title>
+    {%include 'link-href.html'%}
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/styles.css')}}"
+    />
+    <!-- Link to your external stylesheet -->
+  </head>
+  <style>
+    /* General layout */
+
+    .page-title {
+      font-size: 2rem;
+      color: #333;
+    }
+
+    /* Main content area */
+    /* .main-content {
+      background-color: #fff;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    } */
+
+    .posts-list {
+      margin-top: 20px;
+    }
+
+    /* .post {
+      background-color: #fafafa;
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .post:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .post-header {
+      font-size: 0.9rem;
+      color: #777;
+      margin-bottom: 10px;
+    } */
+
+    .post-author {
+      font-weight: bold;
+    }
+
+    .post-date {
+      font-style: italic;
+    }
+
+    .post-body {
+      margin-top: 10px;
+    }
+
+    /* .post-content {
+      font-size: 1.1rem;
+      color: #555;
+      line-height: 1.5;
+    } */
+
+    .no-posts-message {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #888;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .container {
+        padding: 15px;
+      }
+
+      .page-title {
+        font-size: 1.5rem;
+      }
+
+      .post {
+        padding: 12px;
+      }
+
+      .post-content {
+        font-size: 1rem;
+      }
+    }
+    .main {
+      width: 80%;
+    }
+  </style>
+  <body>
+    {%include 'main-header.html'%}
+    <div class="container main-content">
+      <main class="content-area">
+        {% include 'left-bar.html' %}
+        <div class="main">
+          <h1 class="page-title">Posts for #{{ tag }}</h1>
+          {% if posts %}
+          <div class="posts-list">
+            {% for post in posts %}
+            <div class="post">
+              <div class="post-header">
+                <p class="post-author">
+                  Posted by: <strong>{{ post['user_name'] }}</strong>
+                </p>
+                <p class="post-date">
+                  Posted at: <span>{{ post['created_at'] }}</span>
+                </p>
+              </div>
+              <div class="post-body">
+                <p class="post-content">{{ post['content'] }}</p>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          {% else %}
+          <p class="no-posts-message">No posts available for this hashtag.</p>
+          {% endif %}
+        </div>
+      </main>
+    </div>
+    <script>
+      $(document).ready(function () {
+        $(document).on("click", ".hashtag-link", function (e) {
+          e.preventDefault(); // Prevent default link behavior
+
+          var tag = $(this).data("tag"); // Get the tag from the data attribute
+          var newUrl = "{{ url_for('hashtags', tag='') }}" + tag.substring(1); // Dynamically generate URL using url_for
+
+          // Check if the user is already on the page
+          if (window.location.pathname === newUrl) {
+            // If they are, reload the page
+            window.location.reload();
+          } else {
+            // Otherwise, make an AJAX call to fetch the trending page
+            $.ajax({
+              url: newUrl, // The URL to redirect to
+              type: "GET", // GET request to fetch the trending page
+              success: function (response) {
+                // On success, change the window location to the new URL
+                window.location.href = newUrl; // Redirect to the new page
+              },
+              error: function (xhr, status, error) {
+                console.log("Error:", error);
+              },
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

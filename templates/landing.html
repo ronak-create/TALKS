@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+          <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-W5KT34BL');</script>
+  <!-- End Google Tag Manager -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Join TALKS, the exclusive community to enhance your skills and network."
+    />
+    <meta property="og:title" content="TALKS" />
+    <meta
+      property="og:description"
+      content="Join TALKS and start your journey today. It's an exclusive community to learn and grow."
+    />
+    <meta
+      property="og:image"
+      content="{{ url_for('static', filename='images/icon.png') }}"
+    />
+    <meta property="og:url" content="{{ url_for('landing') }}" />
+    <meta name="TALKS:card" content="summary_large_image" />
+    <meta name="TALKS:title" content="TALKS" />
+    <meta
+      name="TALKS:description"
+      content="Join TALKS today and engage with community of mindful people!"
+    />
+    <meta
+      name="TALKS:image"
+      content="{{ url_for('static', filename='images/icon.png') }}"
+    />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='images/icon.png') }}"
+      type="image/x-icon"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/landing_page.css') }}"
+    />
+    <title>TALKS</title>
+    <!-- <link rel="stylesheet" href="styles.css" /> -->
+    <head>
+      <!-- Google Fonts -->
+      <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap"
+        rel="stylesheet"
+      />
+    </head>
+
+    <!-- Font Awesome CDN -->
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&family=Playfair+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <!-- Google tag (gtag.js) -->
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-JNQLWEHE26"
+  ></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-JNQLWEHE26");
+  </script>
+  <body>
+          <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W5KT34BL"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+    <header class="header">
+      <div class="logo">TALKS</div>
+    </header>
+    <!-- Hero Section -->
+    <header class="hero-section">
+      <div class="overlay"></div>
+      <div class="hero-content">
+        <h1>Connect, Share, and Engage: Your Voice, Your Community</h1>
+        <p>
+          Express, connect, and engage with a community that values real-time
+          conversation.
+        </p>
+
+        <div>
+          <a href="#features" class="cta-btn">Discover More</a>
+          <a href="{{url_for('login')}}" class="cta-btn">Join the community</a>
+        </div>
+      </div>
+      <div id="user-count-section" class="user-count">
+        With +<span id="user-count">{{user_count}}</span> others
+      </div>
+
+      <!-- Floating Dots Animation -->
+      <div class="floating-dots">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <!-- Wave Effect Below Hero Section -->
+      <div class="hero-wave"></div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <!-- Slide 1 -->
+          <div class="swiper-slide">
+            <img
+              src="../static/images/feature1.png"
+              alt="Analytics"
+              class="feature-image"
+            />
+            <h2>Build Connections That Matter</h2>
+            <p>
+              Join a thriving community where ideas, stories, and perspectives
+              come alive.
+            </p>
+          </div>
+          <!-- Slide 2 -->
+          <div class="swiper-slide">
+            <img
+              src="../static/images/feature2.png"
+              alt="Experience"
+              class="feature-image"
+            />
+            <h2>Express Yourself Freely</h2>
+            <p>
+              Your unique voice deserves to be heard—share, engage, and inspire.
+            </p>
+          </div>
+          <!-- Slide 3 -->
+          <div class="swiper-slide">
+            <img
+              src="../static/images/feature3.png"
+              alt="Integration"
+              class="feature-image"
+            />
+            <h2>A Platform Made for You</h2>
+            <p>
+              Designed for meaningful interactions, authentic expression, and
+              real connections.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="purpose" class="purpose-section">
+      <div class="container">
+        <h2 class="section-title">Our Purpose</h2>
+        <div class="purpose-content">
+          <p>
+            TALKS is an exclusive community aimed at empowering individuals by
+            providing a platform for learning, networking, and growth. Our
+            mission is to connect like-minded people and foster discussions that
+            elevate skills, spark new ideas, and open opportunities.
+          </p>
+          <p>
+            Whether you're a professional, student, or enthusiast, TALKS is your
+            space to share knowledge, collaborate, and explore new horizons. We
+            believe in the power of dialogue to drive change, spark innovation,
+            and build meaningful relationships.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-form">
+          {% with messages = get_flashed_messages(with_categories=True) %} {% if
+          messages %}
+          <div class="flash-messages">
+            {% for category, message in messages %}
+            <p class="alert alert-{{ category }}">{{ message }}</p>
+            {% endfor %}
+          </div>
+          {% endif %} {% endwith %}
+          <form action="{{ url_for('send_message') }}" method="post">
+            <div class="input-group">
+              <input type="text" name="name" placeholder="Your Name" required />
+            </div>
+            <div class="input-group">
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                required
+              />
+            </div>
+            <div class="input-group">
+              <textarea
+                name="message"
+                rows="5"
+                placeholder="Your Message"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="cta-btn">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img
+            width="30px"
+            src="{{ url_for('static', filename='images/icon.png') }}"
+            alt="TALKS Logo"
+          />
+          <h2>TALKS</h2>
+        </div>
+        <div class="footer-links">
+          <a href="#purpose">Our Purpose</a>
+          <a href="#contact">Contact Us</a>
+          <a href="{{ url_for('privacy_policy') }}">Privacy Policy</a>
+        </div>
+        <div class="social-icons">
+          <a href="https://www.youtube.com/@talks-site" target="_blank" class="facebook">
+            <i class="fab fa-youtube"></i>
+          </a>
+          <a href="https://www.instagram.com/talks.site" target="_blank" class="instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+    <!-- Swiper JS -->
+    <script type="module">
+      import Swiper from "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs";
+      document.addEventListener("DOMContentLoaded", function () {
+        const swiper = new Swiper(".swiper-container", {
+          direction: "horizontal", // Slide direction
+          loop: false, // Disable looping
+          autoplay: false, // Disable autoplay
+          speed: 1000, // Slide transition speed in ms
+        });
+
+        let lastScrollTime = 0; // Track time of the last scroll
+        const scrollDelay = 500; // Minimum time between scroll events (in ms)
+        let isInFeatureSection = false; // Track if we are in the feature section
+
+        // Intersection Observer to detect when the "feature" section is in view
+        const featureSection = document.getElementById("features");
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) {
+              isInFeatureSection = true; // Enable scrolling when in view
+            } else {
+              isInFeatureSection = false; // Disable scrolling when out of view
+            }
+          },
+          { threshold: 0.5 } // Trigger when 50% of the section is in view
+        );
+        observer.observe(featureSection);
+
+        window.addEventListener("wheel", (e) => {
+          if (!isInFeatureSection) return; // Only respond to scroll if in feature section
+
+          const currentTime = Date.now();
+
+          // Throttle scroll event to trigger slide change only after a delay
+          if (currentTime - lastScrollTime > scrollDelay) {
+            const scrollDirection = e.deltaY > 0 ? "down" : "up"; // Determine scroll direction
+
+            if (scrollDirection === "down") {
+              swiper.slideNext(); // Move to the next slide
+            } else if (scrollDirection === "up") {
+              swiper.slidePrev(); // Move to the previous slide
+            }
+
+            lastScrollTime = currentTime; // Update the last scroll time
+            e.preventDefault(); // Prevent default scroll behavior
+          }
+        }, {passive:false});
+      });
+    </script>
+
+    <script>
+      // script.js
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const fadeElements = document.querySelectorAll(".fade-in");
+
+        const observerOptions = {
+          threshold: 0.3, // Adjust this threshold to control when elements fade in
+        };
+
+        const fadeInOnScroll = (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target); // Optional: unobserve to prevent re-triggering
+            }
+          });
+        };
+
+        const observer = new IntersectionObserver(
+          fadeInOnScroll,
+          observerOptions
+        );
+
+        fadeElements.forEach((el) => {
+          observer.observe(el);
+        });
+      });
+    </script>
+  </body>
+</html>

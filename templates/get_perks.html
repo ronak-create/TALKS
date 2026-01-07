@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% include 'link-href.html' %}
+    <title>Get Perks</title>
+    <style>
+      .perks-section {
+        margin: 30px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 80%;
+      }
+
+      .perks-section h2 {
+        font-size: 1.3em;
+        color: #333;
+        margin-bottom: 15px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        transform: translateY(-20px);
+      }
+
+      .perks-section p {
+        margin: 0 5px;
+      }
+
+      /* Cards for displaying perk details */
+      .perk-info {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 30px;
+      }
+
+      /* Base styling for the perk card */
+      .perk-card {
+        background-color: rgba(
+          212,
+          212,
+          212,
+          0.373
+        ); /* Transparent white background */
+        padding: 20px;
+        width: 30%;
+        height: 400px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        border: 1px solid #4169e1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative; /* Add positioning context for the pseudo-element */
+        overflow: hidden;
+        z-index: 20;
+        backdrop-filter: blur(10px); /* Glass blur effect */
+        transition: all 0.3s ease-in-out; /* Smooth transition for effects */
+      }
+
+      /* Shine strip at the corner */
+      .perk-card::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 200%;
+        height: 60px; /* Thin strip */
+        background: rgba(255, 255, 255, 0.493); /* Light strip color */
+        transform: translate(-60%, -60%) rotate(-45deg);
+        outline: 5px solid rgba(255, 255, 255, 0.493);
+        outline-offset: 10px;
+        transition: transform 0.4s ease-in-out; /* Smooth movement of the strip */
+        z-index: 10; /* Make sure it is on top of the card */
+      }
+
+      /* Hover effect for perk card */
+      .perk-card:hover {
+        background-color: rgba(
+          255,
+          255,
+          255,
+          0.2
+        ); /* Lightens the background on hover */
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Deeper shadow for hover effect */
+      }
+
+      /* Movement of the light strip on hover */
+      .perk-card:hover::before {
+        transform: translate(100%, 100%) rotate(-45deg); /* Move the light strip diagonally */
+      }
+
+      /* Optional: Hover animation to make it look more dynamic */
+      .perk-card:hover {
+        transform: scale(1.05); /* Slightly enlarge on hover */
+        cursor: pointer;
+      }
+
+      .perk-card h3 {
+        font-size: 1.5em;
+        color: #4169e1;
+        margin-bottom: 10px;
+      }
+
+      .perk-card p {
+        font-size: 1.2em;
+        color: #555;
+      }
+      .perk-card i {
+        color: #fe4332;
+      }
+
+      .perk-card p:nth-child(2) {
+        font-size: 3rem;
+      }
+
+      /* Button styling */
+      .btn-buy {
+        background-color: #4169e1;
+        color: white;
+        padding: 10px 20px;
+        font-size: 1.1em;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-top: 15px;
+      }
+
+      .perk-info {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 30px;
+        font-size: .8rem;
+      }
+
+      .btn-redeem {
+        background-color: #4169e1;
+        color: white;
+        padding: 12px 20px;
+        font-size: 1.2em;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-top: 10px;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .btn-redeem:hover {
+        background-color: #365ac1;
+      }
+
+      .perks {
+        display: flex;
+      }
+
+      /* Media Query for responsiveness */
+      @media (max-width: 768px) {
+        .perks-section {
+          width: 100%;
+        }
+        .perk-info {
+          width: 100%;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .perk-card {
+          width: 90%;
+          height: 200px;
+          margin-bottom: 20px;
+        }
+
+        .btn-redeem {
+          font-size: 1em;
+          width: 80%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    {% include 'main-header.html' %}
+    <div class="container main-content">
+      {% include 'left-bar.html' %}
+      <div class="perks-section">
+        <h2 class="perks">
+          Your perks:
+          <p>{{user['perks']}} <i class="fa-solid fa-certificate"></i></p>
+        </h2>
+        <div class="perk-info">
+          <div class="perk-card">
+            <h3>Mini Pack</h3>
+            <p>10 <i class="fa-solid fa-certificate"></i></p>
+            <p>9 $ only</p>
+            <p>
+               Perfect for beginners looking to explore basic
+              rewards. Redeemable for small benefits like discounts or starter
+              items.
+            </p>
+            <button class="btn-buy">Buy Now</button>
+          </div>
+          <div class="perk-card">
+            <h3>Intermediate Pack</h3>
+            <p>100 <i class="fa-solid fa-certificate"></i></p>
+            <p>99 $ only</p>
+            <p>
+               Best for regular users. Unlock mid-tier benefits
+              such as exclusive offers, free shipping, or access to special
+              content.
+            </p>
+            <button class="btn-buy">Buy Now</button>
+          </div>
+          <div class="perk-card">
+            <h3>Premium Pack</h3>
+            <p>5000 <i class="fa-solid fa-certificate"></i></p>
+            <p>2999 $ only</p>
+            <p>
+               Designed for power users. Enjoy VIP privileges,
+              premium support, and access to high-value rewards or services.
+            </p>
+            <button class="btn-buy">Buy Now</button>
+          </div>
+        </div>
+        <a href="#" class="btn-redeem">Custom Perks</a>
+      </div>
+    </div>
+  </body>
+</html>

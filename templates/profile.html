@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta property="og:url" content=`{{ url_for("profile", username="user[1]")
+    }}` />
+    <link rel="canonical" href="https://talks.pythonanywhere.com/profile" />
+    {%include 'link-href.html'%}
+    <title>Profile</title>
+  </head>
+  <!-- Google tag (gtag.js) -->
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-JNQLWEHE26"
+  ></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-JNQLWEHE26");
+  </script>
+  <style>
+    /* Profile section */
+    .profile-section {
+      flex: 1;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-left: 20px;
+      height: calc(90vh - 110px);
+    }
+
+    .profile-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid #e0e0e0;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+    }
+
+    .profile-header img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .profile-header .profile-details {
+      flex-grow: 1;
+      margin-left: 20px;
+    }
+
+    .profile-header .profile-details h2 {
+      font-size: 1.6em;
+      color: #315bb5;
+    }
+
+    .profile-header .profile-details p {
+      font-size: 1.2em;
+      color: #888;
+    }
+
+    .profile-details {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .profile-details .info {
+      margin: 0 20px;
+    }
+
+    .profile-details .info p {
+      font-family: Georgia, "Times New Roman", Times, serif;
+    }
+
+    .profile-stats {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    .profile-stats .stat {
+      text-align: center;
+    }
+
+    .profile-stats .stat h3 {
+      font-size: 1.6em;
+      color: #4169e1;
+    }
+
+    .profile-stats .stat p {
+      color: #888;
+    }
+
+    .bio-section {
+      display: flex;
+      align-items: center;
+    }
+
+    .bio-section h3 {
+      font-size: 1.2em;
+    }
+
+    .edit-btn {
+      padding: 10px;
+      font-size: 1rem;
+      border-radius: 50%;
+      color: #888;
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+
+    .modal2 {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1001;
+    }
+
+    .modal-content2 {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .modal-content2 h2 {
+      color: #4169e1;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .modal-content2 textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      resize: none;
+      height: 120px;
+      margin-bottom: 20px;
+    }
+
+    .modal-content2 button {
+      background-color: #4169e1;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1em;
+      width: 100%;
+    }
+
+    .close-btn2 {
+      float: right;
+      font-size: 1.5rem;
+      color: #888;
+      cursor: pointer;
+    }
+
+    .post-feed {
+      width: 100%;
+      overflow-y: scroll;
+      height: 310px;
+      background: #f0f8ff;
+      padding: 10px;
+      padding-top: 0px;
+      border-radius: 20px;
+    }
+
+    .post-feed .perks{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px 10px;
+      border-radius: 12px;
+      background: #aed9ff;
+      margin:  0 20px;
+    }
+    .post-feed .perks p{
+      margin: 0;
+      padding: 0;
+    }
+
+    .profile-details .perks {
+      padding: 10px 15px;
+      border-radius: 12px;
+      background: #aed9ff;
+    }
+
+    @media (max-width: 768px) {
+      .profile-section {
+        width: 100%;
+        margin-left: 0;
+      }
+      .post p {
+        font-size: 1rem;
+      }
+      .post-card {
+        font-size: 0.95em;
+      }
+    }
+  </style>
+
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-W5KT34BL"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    {%include 'main-header.html'%}
+    <div class="container main-content">
+      {%include 'left-bar.html' %}
+      <div class="profile-section">
+        <div class="profile-header">
+          <div class="profile-details">
+            <div class="info">
+              <h2>{{ user[1] }}</h2>
+              {% if user[4] %}
+              <div class="bio-section">
+                <h3>{{ user[4] }}</h3>
+                {% if user[1] == session['username'] %}
+                <!-- Show Edit Bio Button Only for the Profile Owner -->
+                <button class="edit-btn" onclick="openModal2()">
+                  <i class="fa-solid fa-pen"></i>
+                </button>
+                {% endif %}
+              </div>
+              {% else %}
+              <div class="bio-section">
+                {% if user[1] == session['username'] %}
+                <!-- Show Edit Bio Button Only for the Profile Owner -->
+                <button class="edit-btn" onclick="openModal2()">
+                  <i class="fa-solid fa-pen"></i> Add Bio
+                </button>
+                {% endif %}
+              </div>
+              {% endif %}
+            </div>
+            {% if user[1] == session['username'] %}
+            <div class="info">
+              <h3 style="display: flex;flex-direction: column; align-items: center;"><strong>{{ user['login_streak'] }} D</strong>Streak</h3>
+            </div>
+            <div class="info">
+              <div class="perks">
+                {{user['perks']}} <i class="fa-solid fa-certificate"></i>
+              </div>
+            </div>
+            {%endif%}
+          </div>
+        </div>
+        <div class="modal2" id="bioModal">
+          <div class="modal-content2">
+            <span class="close-btn2" onclick="closeModal2()">&times;</span>
+            <h2>Edit Your Bio</h2>
+            <form method="POST" action="{{ url_for('edit_bio') }}">
+              <textarea
+                name="bio"
+                placeholder="Write something about yourself..."
+              >
+{{ user[4] }}</textarea
+              >
+              <button type="submit">Save Bio</button>
+            </form>
+          </div>
+        </div>
+        <div class="profile-stats">
+          <div class="stat">
+            <h3>{{ post_num }}</h3>
+            <p>Thoughts</p>
+          </div>
+        </div>
+        <section class="post-feed">
+          {% if posts|length == 0 %}
+          <p
+            style="
+              margin-top: 100px;
+              font-size: 2rem;
+              width: 100%;
+              display: flex;
+              text-align: center;
+              justify-content: center;
+              color: #888;
+            "
+          >
+            No posts yet!
+          </p>
+          {%endif%} {% for post in posts %}
+          <div class="post" id="post_{{ post.post_id }}">
+            <p>{{ post.content }}</p>
+            <div class="post-actions">
+              <div>
+                <button
+                  class="like-post {% if post.is_liked %} liked {%endif%}"
+                  data-post-id="{{ post.post_id }}"
+                >
+                  <div style="display: flex">
+                    <i
+                      class="fa-regular fa-heart {% if post.is_liked %} fa-solid {%endif%}"
+                      data-post-id="{{post.post_id}}"
+                    ></i>
+                    <p>{{ post.like_count }}</p>
+                  </div>
+                </button>
+                <button
+                  class="comment-toggle"
+                  data-post-id="{{ post.post_id }}"
+                >
+                  <i class="fa-regular fa-comment"></i>
+                  {{ post.comments|length }}
+                </button>
+                <div class="perks"><p>{{post.post_cost}} <i class="fa-solid fa-certificate"></i></p></div>
+              </div>
+              <p>{{ post.created_at }}</p>
+            </div>
+            <div
+              class="comments-section"
+              id="comments_{{ post.post_id }}"
+              style="display: none"
+            >
+              {% for comment in post.comments %}
+              <div class="comment">
+                <p>
+                  <strong>{{ comment.username }}:</strong> {{ comment.content }}
+                </p>
+                <button
+                  class="like-comment {% if comment.is_liked %} liked {%endif%}"
+                  data-comment-id="{{ comment.comment_id }}"
+                >
+                  <i
+                    class="fa-regular fa-heart {% if comment.is_liked %} fa-solid {%endif%}"
+                    data-comment-id="{{comment.comment_id}}"
+                  ></i>
+                  <p>{{ comment.like_count }}</p>
+                </button>
+              </div>
+              {% endfor %}
+              <form
+                action="{{ url_for('comment', post_id=post.post_id) }}"
+                method="POST"
+              >
+                <input type="text" name="content" placeholder="Add a comment" />
+                <button class="comment-btn" type="submit">Comment</button>
+              </form>
+            </div>
+          </div>
+          {% endfor %}
+        </section>
+      </div>
+    </div>
+
+    {%include 'footer.html'%}
+    <script>
+      // JavaScript functions to handle modal
+      function openModal2() {
+        document.getElementById("bioModal").style.display = "flex";
+      }
+      function closeModal2() {
+        document.getElementById("bioModal").style.display = "none";
+      }
+      // Close modal when clicking outside the modal content
+      window.onclick = function (event) {
+        const modal = document.getElementById("bioModal");
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+      $(document).ready(function () {
+        $(document).on("click", ".hashtag-link", function (e) {
+          e.preventDefault(); // Prevent default link behavior
+
+          var tag = $(this).data("tag"); // Get the tag from the data attribute
+          // Make an AJAX call to the 'trending' route
+          $.ajax({
+            url: tag.substring(1), // The URL to redirect to
+            type: "GET", // GET request to fetch the trending page
+            success: function (response) {
+              // On success, change the window location to the new URL
+              window.location.href = tag.substring(1); // Redirect to the new page
+            },
+            error: function (xhr, status, error) {
+              console.log("Error:", error);
+            },
+          });
+        });
+        $(".options-btn").click(function (e) {
+          e.stopPropagation(); // Prevents event bubbling
+          $(".options-menu").hide();
+          var post_id = $(this).data("post-id");
+          $("#options-menu-" + post_id).toggle();
+        });
+
+        // Open the edit modal on "Edit Post" click
+        $(".edit-post").click(function (e) {
+          e.preventDefault();
+          e.stopPropagation(); // Prevents menu from toggling off
+          var post_id = $(this).data("post-id");
+          $("#editModal_" + post_id).show(); // Shows the specific modal
+        });
+
+        $(".report-post").click(function (e) {
+          e.preventDefault();
+          var post_id = $(this).data("post-id");
+          $.post("/report_post/" + post_id, function (data) {
+            alert("Report submitted. Thank you for your feedback.");
+          });
+        });
+
+        // Close the modal when "X" button is clicked
+        $(".close").click(function () {
+          var post_id = $(this).data("post-id");
+          $("#editModal_" + post_id).hide(); // Hides the specific modal
+        });
+
+        // Close the modal when clicking outside of it
+        $(window).click(function (e) {
+          if ($(e.target).hasClass("modal")) {
+            $(".modal").hide(); // Hides any open modal
+          }
+        });
+
+        // Hide the options menu if clicked anywhere outside the menu
+        $(document).click(function (e) {
+          if (!$(e.target).closest(".post-options").length) {
+            $(".options-menu").hide(); // Hide all options menus
+          }
+        });
+
+        // Prevent the options menu from closing when clicking inside it
+        $(".options-menu").click(function (e) {
+          e.stopPropagation(); // Prevents event bubbling
+        });
+
+        // Toggle comment section visibility
+        $(".comment-toggle").click(function () {
+          var post_id = $(this).data("post-id");
+          $("#comments_" + post_id).toggle();
+        });
+
+        // Like or Unlike post
+        $(".like-post").click(function () {
+          var post_id = $(this).data("post-id");
+          $.post("/like_post/" + post_id, function (data) {
+            if (data.action == "liked") {
+              $("button.like-post[data-post-id='" + post_id + "'] p").text(
+                data.like_count
+              );
+              $("i.fa-heart[data-post-id='" + post_id + "']").addClass(
+                "fa-solid"
+              );
+              $("button.like-post[data-post-id='" + post_id + "']").addClass(
+                "liked"
+              );
+            } else {
+              $("button.like-post[data-post-id='" + post_id + "'] p").text(
+                data.like_count
+              );
+              $("i.fa-heart[data-post-id='" + post_id + "']").removeClass(
+                "fa-solid"
+              );
+              $("button.like-post[data-post-id='" + post_id + "']").removeClass(
+                "liked"
+              );
+            }
+          });
+        });
+
+        // Like or Unlike comment
+        $(".like-comment").click(function () {
+          var comment_id = $(this).data("comment-id");
+          $.post("/like_comment/" + comment_id, function (data) {
+            if (data.action == "liked") {
+              $(
+                "button.like-comment[data-comment-id='" + comment_id + "'] p"
+              ).text(data.like_count);
+              $("i.fa-heart[data-comment-id='" + comment_id + "']").addClass(
+                "fa-solid"
+              );
+              $(
+                "button.like-comment[data-comment-id='" + comment_id + "']"
+              ).addClass("liked");
+            } else {
+              $(
+                "button.like-comment[data-comment-id='" + comment_id + "'] p"
+              ).text(data.like_count);
+              $("i.fa-heart[data-comment-id='" + comment_id + "']").removeClass(
+                "fa-solid"
+              );
+              $(
+                "button.like-comment[data-comment-id='" + comment_id + "']"
+              ).removeClass("liked");
+            }
+          });
+        });
+        // Delete post functionality
+        $(".delete-post").click(function (e) {
+          e.preventDefault(); // Prevent default behavior
+          var post_id = $(this).data("post-id");
+
+          // Confirm deletion
+          if (confirm("Are you sure you want to delete this post?")) {
+            $.ajax({
+              url: "/delete_post/" + post_id, // Backend route to handle the deletion
+              type: "POST",
+              success: function (data) {
+                if (data.success) {
+                  $("#post-" + post_id).remove(); // Removes the post from the DOM
+                  $(".options-menu").hide(); // Hide the options menu if it's open
+                } else {
+                  alert("Failed to delete post.");
+                }
+              },
+              error: function () {
+                alert("Error occurred while deleting post.");
+              },
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

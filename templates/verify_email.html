@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {%include 'link-href.html'%}
+    <title>Verify Email</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background: #0a192f;
+        color: #fff;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        padding: 0 20px;
+      }
+
+      h2 {
+        font-size: 2.8rem;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        color: #1e90ff;
+      }
+
+      p {
+        font-size: 1.2rem;
+        color: #ddd;
+        margin-bottom: 2rem;
+      }
+
+      form {
+        background: #1f2a3a;
+        border-radius: 12px;
+        padding: 3rem;
+        width: 100%;
+        max-width: 450px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease-in-out;
+      }
+
+      form:hover {
+        transform: scale(1.05);
+      }
+
+      .otp-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .otp-input-single {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2em;
+        letter-spacing: 0.3em;
+        text-align: center;
+        border: none;
+        outline: none;
+        border-radius: 8px;
+        background-color: #2d3257;
+        color: #e0e3ff;
+        margin-bottom: 20px;
+        transition: box-shadow 0.3s ease-in-out;
+      }
+
+      .otp-input-single::placeholder {
+        color: #6c73a5;
+      }
+
+      .otp-input-single:focus {
+        box-shadow: 0px 0px 10px rgba(45, 125, 255, 0.5);
+      }
+
+      button {
+        width: 100%;
+        padding: 12px;
+        font-size: 1em;
+        font-weight: bold;
+        color: #e0e3ff;
+        background-color: #2d7dff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #1a5dd1;
+      }
+
+      button:active {
+        background: #1a6ba1;
+      }
+
+      .footer {
+        margin-top: 2rem;
+        font-size: 0.9rem;
+        color: #bbb;
+      }
+
+      .footer a {
+        color: #1e90ff;
+        text-decoration: none;
+      }
+
+      @media screen and (max-width: 480px) {
+        h2 {
+          font-size: 2rem;
+        }
+
+        form {
+          padding: 1.5rem;
+        }
+
+        .otp-input {
+          font-size: 1.5rem;
+          width: 45px;
+          height: 45px;
+        }
+
+        button {
+          font-size: 1rem;
+        }
+
+        .otp-container {
+          gap: 8px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Verify Your Email</h2>
+    <p>
+      We have sent a verification code to your email. Please enter it below.
+    </p>
+    <form id="otp-form" method="POST">
+      <div class="otp-container">
+        <input
+          type="text"
+          id="otp-input"
+          name="verification_code"
+          maxlength="6"
+          placeholder="Enter 6-digit code"
+          class="otp-input-single"
+        />
+      </div>
+
+      <button type="submit">Verify</button>
+    </form>
+
+    <div class="footer">
+      <p>
+        Didn't receive the code? <a href="{{ url_for('resend_verification', email=email) }}" id="resend-link">Resend OTP</a>
+      </p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $(".otp-input")
+          .on("input", function () {
+            if ($(this).val().length === 1) {
+              $(this).next(".otp-input").focus();
+            }
+          })
+          .on("keyup", function (e) {
+            if (e.key === "Backspace" && !$(this).val()) {
+              $(this).prev(".otp-input").focus();
+            }
+          });
+        const $resendLink = $("#resend-link");
+        let resendCountdown = 30;
+
+        // Disable link and start countdown
+        function startResendTimer() {
+          $resendLink
+            .text(`Resend OTP in ${resendCountdown}s`)
+            .css({"pointer-events" : "none", "color": "grey"}); // disable click
+
+          const interval = setInterval(function () {
+            resendCountdown--;
+            $resendLink.text(`Resend OTP in ${resendCountdown}s`);
+
+            if (resendCountdown <= 0) {
+              clearInterval(interval);
+              $resendLink.text("Resend OTP").css({"pointer-events" : "none", "color": "#1e90ff"}); // re-enable click
+              resendCountdown = 30; // reset countdown
+            }
+          }, 1000);
+        }
+
+        // Start the resend timer on page load
+        startResendTimer();
+
+        // Handle resend click to reset the timer
+        $resendLink.on("click", function (e) {
+          e.preventDefault();
+          // Here you can add your resend functionality code, e.g., an AJAX call.
+          startResendTimer(); // restart the timer after resending
+        });
+      });
+    </script>
+  </body>
+</html>

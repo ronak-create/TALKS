@@ -1,0 +1,312 @@
+{% extends "base.html" %} {% block content %}
+<section class="cookies-policy">
+  <h2>Cookies Policy</h2>
+  <p>
+    At TALKS, we value your privacy and are committed to being transparent about
+    how we use cookies. This section explains what cookies are, the different
+    types of cookies we use, how we use them, and how you can manage your cookie
+    preferences to enhance your browsing experience.
+  </p>
+
+  <h3>1. What Are Cookies?</h3>
+  <p>
+    Cookies are small text files that are stored on your device (computer,
+    smartphone, or tablet) when you visit websites. These files are placed by
+    the website you visit to collect information about your browsing behavior,
+    preferences, and interactions with the site. Cookies enable websites to
+    remember you and your preferences, making it easier for you to navigate and
+    interact with the site during future visits. They can enhance the
+    functionality of the site and provide a personalized experience based on
+    your previous actions.
+  </p>
+
+  <h3>2. Types of Cookies We Use</h3>
+  <p>
+    We use several types of cookies to improve your experience on TALKS. Below
+    is a detailed description of each type of cookie:
+  </p>
+  <ul>
+    <li>
+      <strong>Essential Cookies:</strong> These cookies are necessary for the
+      basic operation of our website and are crucial for providing you with the
+      services you request. They help in tasks like logging in, completing
+      forms, and ensuring website security. Without these cookies, certain
+      functionalities of TALKS may not be available.
+    </li>
+    <li>
+      <strong>Analytical Cookies:</strong> These cookies collect information
+      about how visitors use the website, such as the pages viewed, the links
+      clicked, and the time spent on the site. This data helps us analyze
+      website traffic and performance, allowing us to make improvements and
+      offer a better user experience. These cookies are typically anonymous and
+      do not store personal data.
+    </li>
+    <li>
+      <strong>Functional Cookies:</strong> Functional cookies enable advanced
+      website features that enhance the user experience. They allow us to
+      remember your preferences, such as language settings, and provide
+      customized content. They help ensure that the website responds to your
+      individual needs, offering a more personalized experience each time you
+      visit.
+    </li>
+    <li>
+      <strong>Targeting Cookies:</strong> These cookies are used to track your
+      browsing behavior across websites and deliver more relevant advertisements
+      or content based on your interests. They help us present you with ads that
+      are tailored to you, improving the overall relevance of the content you
+      see during your browsing sessions.
+    </li>
+  </ul>
+
+  <h3>3. Managing Cookies</h3>
+  <p>
+    You have the ability to manage cookies through your browser settings. Most
+    modern browsers allow you to block or delete cookies from specific sites, or
+    even prevent cookies from being stored entirely. However, please note that
+    disabling cookies may affect the performance of certain features and
+    functionalities of TALKS. You may experience a less personalized user
+    experience, or some parts of the website may not function as intended.
+  </p>
+  <p>
+    For more detailed information on how to manage your cookies, refer to the
+    help section of your browser. Keep in mind that if you delete or disable
+    cookies, some parts of TALKS may not function properly, and we may not be
+    able to remember your preferences across sessions.
+  </p>
+
+  <p>
+    If you have any concerns or questions about how cookies are used on TALKS,
+    feel free to contact our support team for more information.
+  </p>
+
+  <p>
+    <a href="{{ url_for('privacy_policy') }}"
+      >Back to Privacy Policy Overview</a
+    >
+  </p>
+</section>
+
+<style>
+  .cookies-policy {
+    font-family: "Arial", sans-serif;
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 40px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    line-height: 1.6;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.cookies-policy h2 {
+    color: #28a745;
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.cookies-policy h3 {
+    text-transform: uppercase;
+    color: #28a745;
+    font-size: 22px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.cookies-policy p {
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+.cookies-policy ul {
+    list-style-type: disc;
+    padding-left: 30px;
+    margin-bottom: 15px;
+}
+
+.cookies-policy ul li {
+    color: #555;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.cookies-policy a {
+    color: #28a745;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.cookies-policy a:hover {
+    color: #1e7e34;
+    text-decoration: underline;
+}
+
+.cookies-policy .cookie-type {
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+.cookies-policy .cookie-type strong {
+    color: #28a745;
+    font-size: 18px;
+}
+
+.cookies-policy .cookie-type p {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.cookies-policy .cookie-management {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cookies-policy .cookie-management p {
+    font-size: 16px;
+    color: #333;
+}
+
+.cookies-policy .cookie-management a {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.cookies-policy .cookie-management a:hover {
+    color: #0056b3;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.cookies-policy {
+    animation: fadeIn 1s ease-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .cookies-policy {
+        padding: 20px;
+        max-width: 90%;
+    }
+
+    .cookies-policy h2 {
+        font-size: 24px;
+    }
+
+    .cookies-policy h3 {
+        font-size: 20px;
+    }
+
+    .cookies-policy p {
+        font-size: 15px;
+    }
+
+    .cookies-policy ul {
+        padding-left: 20px;
+    }
+
+    .cookies-policy ul li {
+        font-size: 14px;
+        margin-bottom: 6px;
+    }
+
+    .cookies-policy .cookie-type {
+        padding: 8px;
+    }
+
+    .cookies-policy .cookie-type strong {
+        font-size: 16px;
+    }
+
+    .cookies-policy .cookie-type p {
+        font-size: 14px;
+    }
+
+    .cookies-policy .cookie-management {
+        padding: 15px;
+    }
+
+    .cookies-policy .cookie-management p {
+        font-size: 14px;
+    }
+
+    .cookies-policy .cookie-management a {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cookies-policy {
+        padding: 15px;
+        max-width: 95%;
+        text-wrap: wrap;
+    }
+
+    .cookies-policy h2 {
+        font-size: 20px;
+    }
+
+    .cookies-policy h3 {
+        font-size: 18px;
+    }
+
+    .cookies-policy p {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .cookies-policy ul {
+        padding-left: 15px;
+    }
+
+    .cookies-policy ul li {
+        font-size: 13px;
+        margin-bottom: 5px;
+    }
+
+    .cookies-policy .cookie-type {
+        padding: 6px;
+    }
+
+    .cookies-policy .cookie-type strong {
+        font-size: 14px;
+    }
+
+    .cookies-policy .cookie-type p {
+        font-size: 13px;
+    }
+
+    .cookies-policy .cookie-management {
+        padding: 12px;
+    }
+
+    .cookies-policy .cookie-management p {
+        font-size: 13px;
+    }
+
+    .cookies-policy .cookie-management a {
+        font-size: 13px;
+    }
+}
+
+</style>
+{% endblock %}

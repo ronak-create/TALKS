@@ -1,0 +1,297 @@
+{% extends "base.html" %} {% block content %}
+<section class="privacy-policy">
+
+  <div class="content">
+    <p>
+      At TALKS, we are dedicated to safeguarding your privacy and ensuring that
+      our users are fully informed about how their personal information is
+      collected, stored, and processed. We understand the importance of privacy
+      and transparency, which is why we have created this Privacy Policy to
+      outline the various ways in which your data is handled. The following
+      sections provide a comprehensive overview of our privacy practices, so you
+      can make informed decisions about how you interact with TALKS. For more
+      detailed information, please refer to the individual sections by clicking
+      the relevant links in the navigation menu above.
+    </p>
+
+    <section id="data-collection">
+      <h2>1. Data Collection</h2>
+      <p>
+        At TALKS, we collect data to improve your experience on our platform.
+        The data we gather allows us to personalize your interactions, offer
+        relevant content, and enhance the overall functionality of our services.
+        The types of data we collect are divided into the following categories:
+      </p>
+      <ul>
+        <li>
+          <strong>Personal Information:</strong> This includes your name, email
+          address, and other profile details that you provide when creating or
+          updating your account. This information helps us identify and
+          communicate with you effectively.
+        </li>
+        <li>
+          <strong>Usage Information:</strong> We track how you interact with our
+          platform, such as which pages you visit, the actions you take, and the
+          features you use. This helps us understand your preferences and
+          optimize our services accordingly.
+        </li>
+        <li>
+          <strong>Location Data:</strong> If you opt-in to use location-based
+          services, we may collect your location data. This allows us to provide
+          you with location-specific content and recommendations based on your
+          geographical location.
+        </li>
+      </ul>
+      <p>
+        For a more detailed explanation of what data we collect and how we use
+        it, please visit our
+        <a href="{{ url_for('data_collection') }}">Data Collection</a> page.
+      </p>
+    </section>
+
+    <section id="cookies">
+      <h2>2. Cookies</h2>
+      <p>
+        We use cookies to enhance your experience while using TALKS. Cookies are
+        small text files that are stored on your device to help us remember your
+        preferences, understand your usage patterns, and deliver more relevant
+        content. By using our platform, you consent to the use of cookies, which
+        help us analyze user behavior and improve functionality. Cookies can
+        also be used for marketing purposes to display personalized
+        advertisements based on your interests.
+      </p>
+      <p>
+        For more details on how we use cookies and how you can manage your
+        preferences, please refer to our
+        <a href="{{ url_for('cookies') }}">Cookies</a> page.
+      </p>
+    </section>
+
+    <section id="data-sharing">
+      <h2>3. Data Sharing</h2>
+      <p>
+        Your privacy is important to us, and we want to assure you that your
+        personal data will never be sold to third parties. However, there are
+        certain circumstances where we may share your information with trusted
+        partners or entities. This may include sharing data with service
+        providers who assist in operating our platform, as well as complying
+        with legal obligations or responding to requests from law enforcement or
+        regulatory authorities. In any case, we are committed to ensuring that
+        your data is shared securely and only when necessary.
+      </p>
+      <p>
+        To learn more about how and when we share your data, please visit our
+        <a href="{{ url_for('data_sharing') }}">Data Sharing</a> page.
+      </p>
+    </section>
+
+    <section id="data-protection">
+      <h2>4. Data Protection</h2>
+      <p>
+        We take the protection of your personal data very seriously. Our team
+        employs a variety of industry-standard security measures to safeguard
+        your information against unauthorized access, disclosure, alteration, or
+        destruction. These measures include advanced encryption techniques,
+        secure data storage solutions, and robust access controls. Additionally,
+        we perform regular security audits to ensure that our systems remain
+        secure and up-to-date with the latest protection protocols. We are
+        continuously evaluating and improving our security practices to offer
+        you the highest level of protection for your personal data.
+      </p>
+      <p>
+        For further details on the steps we take to protect your data, please
+        visit our
+        <a href="{{ url_for('data_protection') }}">Data Protection</a> page.
+      </p>
+    </section>
+
+    <section id="your-rights">
+      <h2>5. Your Rights</h2>
+      <p>
+        As a user, you have a number of rights over your personal data. These
+        rights are designed to give you control over how your data is handled
+        and ensure that you can make informed choices. You have the right to
+        access the personal data we hold about you, correct any inaccuracies,
+        and request the deletion of your data if it is no longer necessary for
+        the purposes for which it was collected. Additionally, you can withdraw
+        your consent for data processing at any time, and we will take
+        appropriate steps to honor your request.
+      </p>
+      <p>
+        To learn more about your rights and how to exercise them, please visit
+        our <a href="{{ url_for('user_rights') }}">Your Rights</a> page.
+      </p>
+    </section>
+
+    <section id="contact-us">
+      <h2>6. Contact Us</h2>
+      <p>
+        If you have any questions, concerns, or requests related to our Privacy
+        Policy or the handling of your personal data, we encourage you to
+        contact us. Our team is available to address any issues or provide
+        additional clarification on our practices. You can reach out to us
+        through the following methods:
+      </p>
+      <ul>
+        <li>Email: <a href="mailto:support@talks.com">support@talks.com</a></li>
+        <li>Phone: +1 (123) 456-7890</li>
+        <li>
+          Address: TALKS Privacy Department, 1234 Example Street, City, Country
+        </li>
+      </ul>
+      <p>
+        For more details, please visit our
+        <a href="{{ url_for('pp_contact') }}">Contact Us</a> page.
+      </p>
+    </section>
+  </div>
+</section>
+
+<style>
+.privacy-policy {
+  font-family: "Arial", sans-serif;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 20px; /* Reduced padding for smaller screens */
+  line-height: 1.6;
+  background-color: #f4f4f9;
+}
+
+.content {
+  padding: 20px; /* Adjusted padding */
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  animation: slideIn 1s ease-out;
+}
+
+/* Responsive Font Sizes and Layout */
+.content h2 {
+  color: #28a745;
+  font-size: 24px; /* Smaller font size for mobiles */
+  margin-top: 15px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.content p {
+  font-size: 15px; /* Reduced font size for readability on small screens */
+  color: #333;
+  margin-bottom: 15px;
+  text-align: justify;
+}
+
+.content ul {
+  padding-left: 15px; /* Adjusted padding for smaller screens */
+  font-size: 15px;
+  color: #333;
+}
+
+.content ul li {
+  padding: 0px 10px;
+  margin-bottom: 10px; /* Reduced spacing for compact display */
+  line-height: 1.5;
+}
+
+.content a {
+  color: #28a745;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.content a:hover {
+  text-decoration: underline;
+  color: #218838;
+}
+
+.content section {
+  margin-bottom: 30px; /* Adjusted spacing */
+}
+
+/* Keyframes (No Changes) */
+@keyframes slideIn {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+  .privacy-policy {
+    padding: 15px; /* Compact padding for tablets */
+    max-width: 100%; /* Full width for smaller devices */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .content {
+    padding: 15px; /* Compact padding for tablets */
+  }
+
+  .content section{
+    width: 100%;
+    padding: 0px;
+  }
+
+  .content h2 {
+    padding: 10px;
+    font-size: 22px; /* Smaller font for tablets */
+  }
+
+  .content p {
+    padding: 10px;
+    text-wrap:wrap;
+    font-size: 14px; /* Adjusted for readability */
+  }
+
+  .content ul {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .privacy-policy {
+    width: 100%;
+    padding: 0px;
+  }
+
+  .content {
+    width: 100%;
+    padding: 0px; /* Adjusted for smaller screens */
+  }
+
+  .content h2 {
+    font-size: 20px; /* Reduced for mobile */
+  }
+
+  .content p {
+    font-size: 13px;
+  }
+
+  .content ul {
+    font-size: 13px;
+    padding-left: 0px;
+  }
+
+  .content ul li {
+    margin-bottom: 8px; /* Closer spacing */
+  }
+}
+
+</style>
+{% endblock %}

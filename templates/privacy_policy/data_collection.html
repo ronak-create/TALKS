@@ -1,0 +1,346 @@
+{% extends "base.html" %} {% block content %}
+<section class="data-collection">
+  <h2>Data Collection</h2>
+  <p>
+    At TALKS, we value the privacy and security of our users' information. We
+    collect and use various types of data to provide a better, personalized
+    experience on our platform. This section explains what information we
+    collect, how we collect it, and how we use it to improve your experience on
+    TALKS.
+  </p>
+
+  <h3>1. Information You Provide</h3>
+  <p>
+    When you create an account, post content, or engage with the TALKS platform,
+    you may provide personal data, which includes but is not limited to:
+  </p>
+  <ul>
+    <li>
+      <strong>Username, email address, and password:</strong> These are used to
+      create your account, authenticate you, and provide access to your
+      personalized content.
+    </li>
+    <li>
+      <strong>Profile information:</strong> This includes details like your
+      profile picture, biography, interests, and other content you choose to
+      share. It helps us to build a personalized experience.
+    </li>
+    <li>
+      <strong>Communication content:</strong> All messages, posts, comments, and
+      any other content you share on TALKS.
+    </li>
+    <li>
+      <strong>Social media integration:</strong> If you choose to link your
+      account with a social media platform, we may collect data provided through
+      that integration, such as your social media profile details and posts.
+    </li>
+  </ul>
+
+  <h3>2. Information Collected Automatically</h3>
+  <p>
+    In addition to the information you provide, we also collect certain data
+    automatically through your interaction with TALKS. This helps us improve
+    platform performance, enhance security, and better understand how users
+    engage with our services. The data we collect includes:
+  </p>
+  <ul>
+    <li>
+      <strong>Device information:</strong> This includes your device's IP
+      address, browser type, operating system, device type (mobile, desktop,
+      etc.), and your device's unique identifiers. This helps us optimize the
+      user experience across different devices.
+    </li>
+    <li>
+      <strong>Usage data:</strong> We track how you interact with TALKS, such as
+      the pages you visit, the time you spend on each page, the links you click,
+      and other activities performed on the platform. This data is used to
+      improve user interface design and functionality.
+    </li>
+    <li>
+      <strong>Cookies and tracking data:</strong> We use cookies and similar
+      technologies to gather information on your browsing habits, preferences,
+      and behavior across sessions. This allows us to personalize your
+      experience and provide you with more relevant content.
+    </li>
+    <li>
+      <strong>Location data:</strong> If you enable location tracking, we
+      collect data related to your geographical location. This allows us to
+      provide location-specific features, such as nearby friends or events.
+    </li>
+  </ul>
+
+  <h3>3. How We Use Your Data</h3>
+  <p>
+    Your data is used to provide and improve the TALKS platform. We use the
+    collected data for the following purposes:
+  </p>
+  <ul>
+    <li>
+      <strong>Personalization:</strong> To tailor the content, recommendations,
+      and user experience based on your preferences and usage patterns.
+    </li>
+    <li>
+      <strong>Account management:</strong> To manage your account, including
+      sign-in, registration, and security. We also use your data to handle
+      customer support requests.
+    </li>
+    <li>
+      <strong>Platform improvement:</strong> To analyze usage trends, optimize
+      features, and address any technical issues that may arise.
+    </li>
+    <li>
+      <strong>Security:</strong> To ensure the security of the platform,
+      including detecting and preventing unauthorized access or activity.
+    </li>
+    <li>
+      <strong>Marketing and communication:</strong> We may use your data to send
+      you promotional materials, updates, and other information you may find
+      useful. You can opt out of receiving marketing communications at any time.
+    </li>
+  </ul>
+
+  <h3>4. Data Retention</h3>
+  <p>
+    We retain your data only as long as necessary for the purposes outlined
+    above. If you decide to delete your account, your personal data will be
+    removed from our active databases. However, certain data may be retained in
+    backup systems or as required by law.
+  </p>
+
+  <h3>5. Sharing Your Data</h3>
+  <p>We may share your information in the following scenarios:</p>
+  <ul>
+    <li>
+      <strong>With service providers:</strong> We may share your data with
+      trusted third-party service providers who help us run the platform, such
+      as cloud storage providers, customer support systems, and payment
+      processors.
+    </li>
+    <li>
+      <strong>For legal compliance:</strong> If required by law, we may disclose
+      your data to comply with legal obligations, protect our rights, or
+      investigate fraudulent activities.
+    </li>
+    <li>
+      <strong>With consent:</strong> We may share your information with third
+      parties if you give us explicit consent to do so.
+    </li>
+  </ul>
+
+  <h3>6. Your Rights and Choices</h3>
+  <p>
+    You have the right to access, correct, or delete your personal data at any
+    time. You can also object to the processing of your data or withdraw your
+    consent for certain data uses. To exercise these rights, please contact us
+    at our support email.
+  </p>
+
+  <h3>7. Security Measures</h3>
+  <p>
+    We take the security of your data seriously and implement industry-standard
+    measures to protect it from unauthorized access, alteration, or disclosure.
+    However, no security system is completely foolproof, and we cannot guarantee
+    the absolute security of your data.
+  </p>
+
+  <p>
+    <a href="{{ url_for('privacy_policy') }}"
+      >Back to Privacy Policy Overview</a
+    >
+  </p>
+</section>
+
+<style>
+.data-collection {
+    font-family: "Arial", sans-serif;
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 40px;
+    margin-bottom: 40px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-out;
+}
+
+.data-collection h2 {
+    color: #28a745;
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.data-collection h3 {
+    color: #28a745;
+    font-size: 22px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.data-collection p {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+.data-collection ul {
+    list-style-type: disc;
+    padding-left: 30px;
+    margin-bottom: 15px;
+}
+
+.data-collection ul li {
+    color: #333;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.data-collection a {
+    color: #28a745;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.data-collection a:hover {
+    color: #218838;
+    text-decoration: underline;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .data-collection {
+        max-width: 90%; /* Adjust width for tablets */
+        padding: 20px;
+    }
+
+    .data-collection h2 {
+        font-size: 24px; /* Smaller font for h2 */
+        margin-bottom: 15px;
+    }
+
+    .data-collection h3 {
+        font-size: 18px; /* Smaller font for h3 */
+    }
+
+    .data-collection p {
+        font-size: 14px; /* Smaller font for paragraphs */
+    }
+
+    .data-collection ul {
+        padding-left: 20px;
+    }
+
+    .data-collection ul li {
+        font-size: 14px; /* Smaller list items */
+    }
+
+    .data-collection a {
+        font-size: 14px; /* Adjust link font size */
+    }
+}
+
+@media (max-width: 480px) {
+    .data-collection {
+        max-width: 95%; /* For mobile screens */
+        padding: 15px;
+    }
+
+    .data-collection h2 {
+        font-size: 20px;
+    }
+
+    .data-collection h3 {
+        font-size: 16px;
+    }
+
+    .data-collection p {
+        font-size: 13px;
+    }
+
+    .data-collection ul li {
+        font-size: 13px;
+    }
+}
+
+  
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+  .data-collection {
+    padding: 15px; /* Compact padding for tablets */
+    max-width: 100%; /* Full width for smaller devices */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-wrap: wrap;
+  }
+
+  section{
+    width: 90%;
+    padding: 0px;
+  }
+
+  .content h2 {
+    padding: 0px;
+    font-size: 22px; /* Smaller font for tablets */
+  }
+
+  .content p {
+    padding: 10px;
+    text-wrap:wrap;
+    font-size: 14px; /* Adjusted for readability */
+  }
+
+  .content ul {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .privacy-policy {
+    width: 100%;
+    padding: 0px;
+  }
+
+  .content {
+    width: 100%;
+    padding: 0px; /* Adjusted for smaller screens */
+  }
+
+  .content h2 {
+    font-size: 20px; /* Reduced for mobile */
+  }
+
+  .content p {
+    font-size: 13px;
+  }
+
+  .content ul {
+    font-size: 13px;
+    padding-left: 0px;
+  }
+
+  .content ul li {
+    margin-bottom: 8px; /* Closer spacing */
+  }
+}
+
+</style>
+
+{% endblock %}

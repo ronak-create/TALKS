@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section class="contact-us-section">
+        <h2>Contact Us</h2>
+        <p>
+            If you have any questions, concerns, or requests regarding our Privacy Policy or the handling of your personal data, please don't hesitate to get in touch with us. We are here to assist you and ensure that your privacy is respected. You can reach us through the following contact methods:
+        </p>
+
+        <h3>Email</h3>
+        <p>
+            For general inquiries or issues related to your privacy, feel free to send an email to our Privacy Team:
+        </p>
+        <p>
+            <a href="mailto:talks.member@gmail.com">talks.member@gmail.com</a>
+        </p>
+
+        <h3>Mailing Address</h3>
+        <p>
+            If you prefer to contact us by mail, you can send your inquiries or requests to the following address:
+        </p>
+        <p>
+            TALKS Privacy Team<br>
+            123 Privacy Lane,<br>
+            San Francisco, CA 94102,<br>
+            United States
+        </p>
+
+        <h3>Data Requests</h3>
+        <p>
+            For any data-related requests such as accessing, updating, or deleting your personal data, please ensure to include the following details to help us process your request swiftly:
+        </p>
+        <ul>
+            <li>Your full name</li>
+            <li>Your username</li>
+            <li>Your registered email address</li>
+        </ul>
+        <p>
+            If your request requires specific details or information about your account, we may ask for additional verification to ensure the security of your personal data.
+        </p>
+
+        <h3>Business Inquiries</h3>
+        <p>
+            For business inquiries or partnership opportunities, please reach out to us at:
+        </p>
+        <p>
+            <a href="mailto:talks.member@gmail.com">talks.member@gmail.com</a>
+        </p>
+
+        <h3>Response Time</h3>
+        <p>
+            We strive to respond to all inquiries as quickly as possible. For general inquiries, you can expect a response within 1-2 business days. For data-related requests, response times may vary based on the complexity of the request and the required verification.
+        </p>
+
+        <p>
+            If you have any further questions or need more information, please don’t hesitate to contact us. Your privacy is important to us, and we are committed to addressing your concerns.
+        </p>
+
+        <p>
+            <a href="{{ url_for('privacy_policy') }}">Back to Privacy Policy Overview</a>
+        </p>
+    </section>
+
+    <style>
+        .contact-us-section {
+    font-family: Arial, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.contact-us-section h2 {
+    font-size: 28px;
+    color: #28a745;
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.contact-us-section h3 {
+    font-size: 22px;
+    color: #28a745;
+    text-transform: uppercase;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.contact-us-section p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.contact-us-section a {
+    color: #16a085;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-us-section a:hover {
+    text-decoration: underline;
+}
+
+.contact-us-section ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-us-section {
+        padding: 25px;
+        max-width: 90%;
+    }
+
+    .contact-us-section h2 {
+        font-size: 24px;
+    }
+
+    .contact-us-section h3 {
+        font-size: 20px;
+    }
+
+    .contact-us-section p {
+        font-size: 15px;
+    }
+
+    .contact-us-section ul {
+        padding-left: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-us-section {
+        padding: 15px;
+        max-width: 95%;
+        padding-bottom: 40px;
+        text-wrap: wrap;
+    }
+
+    .contact-us-section h2 {
+        font-size: 20px;
+    }
+
+    .contact-us-section h3 {
+        font-size: 18px;
+    }
+
+    .contact-us-section p {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .contact-us-section ul {
+        padding-left: 10px;
+    }
+}
+
+    </style>
+{% endblock %}

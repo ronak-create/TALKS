@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Join TALKS, the exclusive community to enhance your skills and network."
+    />
+    <meta property="og:title" content="Register - TALKS" />
+    <meta
+      property="og:description"
+      content="Join TALKS and start your journey today. It's an exclusive community to learn and grow."
+    />
+    <meta
+      property="og:image"
+      content="{{ url_for('static', filename='images/icon.png') }}"
+    />
+    <meta property="og:url" content="{{ url_for('register') }}" />
+    <meta name="TALKS:card" content="summary_large_image" />
+    <meta name="TALKS:title" content="Register - TALKS" />
+    <meta
+      name="TALKS:description"
+      content="Join TALKS today and engage with community of mindful people!"
+    />
+    <meta
+      name="TALKS:image"
+      content="{{ url_for('static', filename='images/icon.png') }}"
+    />
+    <link rel="canonical" href="https://talks.pythonanywhere.com/register" />
+
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='images/icon.png') }}"
+      type="image/x-icon"
+    />
+    <title>Register - TALKS</title>
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" /> -->
+  </head>
+  <!-- Google tag (gtag.js) -->
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-JNQLWEHE26"
+  ></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-JNQLWEHE26");
+  </script>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #0d2b1d, #345635);
+      color: #e3efd3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      /* overflow: hidden; */
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    *::-webkit-scrollbar {
+      display: none;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    /* Container Layout */
+    .register-container {
+      display: flex;
+      flex-direction: row;
+      background: rgba(13, 43, 29, 0.95);
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(52, 86, 53, 0.3);
+      overflow: hidden;
+      max-width: 850px;
+      width: 100%;
+      margin: 0 20px;
+    }
+
+    /* Left Side */
+    .register-info {
+      background: url("../premium-background.jpg") center/cover no-repeat;
+      padding: 60px 40px;
+      color: #e3efd3;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 50%;
+      text-align: left;
+      position: relative;
+    }
+
+    .register-info::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(13, 43, 29, 0.8);
+    }
+
+    .register-info h1 {
+      font-size: 2.8em;
+      color: #e3efd3;
+      font-weight: 700;
+      margin-bottom: 15px;
+      transform: translateY(-20px);
+      opacity: 0;
+      animation: slideDown 1s ease-out forwards;
+    }
+
+    .register-info p a {
+      color: #aec3b0;
+    }
+
+    .register-info p {
+      font-size: 1.2em;
+      opacity: 0;
+      animation: fadeInText 1.5s ease-out forwards;
+      animation-delay: 0.5s;
+    }
+
+    @keyframes slideDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInText {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Right Side - Form */
+    .register-form {
+      position: relative;
+      background: #0d2b1d;
+      padding: 60px 40px;
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      color: #6b8f61;
+    }
+
+    .register-form h2 {
+      font-size: 2.2em;
+      font-weight: 600;
+      color: #aec3b0;
+      margin-bottom: 20px;
+      text-align: center;
+      opacity: 0;
+      animation: slideDown 1s ease-out forwards;
+      animation-delay: 0.5s;
+    }
+
+    /* Divider Line */
+    .divider-line {
+      width: 5px;
+      background-color: rgba(174, 195, 176, 0.3);
+      height: 70%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .register-form form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    /* Input Fields */
+    .register-form input[type="text"],
+    .register-form input[type="password"],
+    .register-form input[type="email"],
+    .contact-container select,
+    .register-form input[type="number"] {
+      background: #345635;
+      color: #e3efd3;
+      padding: 15px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1em;
+      opacity: 0;
+      animation: gunLoad 1s ease forwards;
+      transition: background-color 0.3s ease;
+    }
+
+    .register-form input[type="number"] {
+      width: 70%;
+    }
+
+    .contact-container select {
+      width: 50%;
+      padding: 5px !important;
+    }
+
+    .register-form input[type="text"] {
+      animation-delay: 0.7s;
+    }
+
+    .register-form input[type="number"] {
+      animation-delay: 1s;
+    }
+
+    .register-form input[type="email"] {
+      animation-delay: 1.3s;
+    }
+
+    .register-form input[type="password"] {
+      animation-delay: 1.6s;
+    }
+
+    .register-form select {
+      animation-delay: 1s;
+    }
+
+    @keyframes gunLoad {
+      0% {
+        opacity: 0;
+        transform: scaleX(0.8);
+      }
+      50% {
+        opacity: 0.5;
+        transform: scaleX(1.05);
+      }
+      100% {
+        opacity: 1;
+        transform: scaleX(1);
+      }
+    }
+
+    /* Submit Button */
+    .register-form button[type="submit"] {
+      background-color: #aec3b0;
+      color: #0d2b1d;
+      padding: 15px;
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.2em;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .register-form button[type="submit"]:hover {
+      background-color: #e3efd3;
+      transform: translateY(-2px);
+    }
+
+    .register-form button[type="submit"]:active {
+      background-color: #d2e4ce;
+      transform: translateY(1px);
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      .header {
+        display: none;
+      }
+      .register-container {
+        flex-direction: column;
+      }
+
+      .register-info,
+      .register-form {
+        width: 100%;
+        padding: 40px 20px;
+      }
+
+      .register-info h1 {
+        font-size: 2em;
+      }
+
+      .register-form h2 {
+        font-size: 1.8em;
+      }
+
+      .divider-line {
+        display: none;
+      }
+    }
+
+    .header {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Logo Styling */
+    .logo {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: bold;
+      font-size: 48px;
+      color: #fff;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+      background: linear-gradient(135deg, #5f2c82, #49a09d);
+      background-clip: text;
+      -webkit-background-clip: text;
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+    }
+
+    .logo:hover {
+      transform: scale(1.1);
+      text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Password Strength Indicator */
+    .password-strength {
+      display: none;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    .contact-container {
+      width: 80%;
+      display: flex;
+      justify-content: space-between; /* Adjust the spacing between elements */
+      align-items: center; /* Center the elements vertically */
+    }
+
+    .contact-container select {
+      width: 20%; /* Use relative width to ensure proper alignment */
+      padding: 20px 10px;
+      font-size: 1em;
+    }
+
+    .contact-container input[type="number"] {
+      width: 75%; /* Keep the same width for number input */
+    }
+
+    @media (max-width: 768px) {
+      .contact-container {
+        flex-direction: column; /* Stack the elements vertically on smaller screens */
+        align-items: flex-start; /* Align them to the left */
+      }
+
+      .contact-container select,
+      .contact-container input[type="number"] {
+        width: 100%; /* Ensure the inputs and select take full width on small screens */
+      }
+      .header {
+        display: none;
+      }
+    }
+
+    .contact-container input::-webkit-outer-spin-button,
+    .contact-container input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    /* Styles for flash messages */
+    .flash-messages {
+      padding: 5px;
+      text-align: center;
+    }
+
+    .flash {
+      padding: 5px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    /* Success message style */
+    .flash.success {
+      background-color: #28a745;
+      color: white;
+    }
+
+    /* Error message style */
+    .flash.error {
+      background-color: #dc3545;
+      color: white;
+    }
+  </style>
+
+  <body>
+    <div class="header">
+      <div class="logo">TALKS</div>
+    </div>
+
+    <div class="register-container">
+      <!-- Left Side -->
+      <div class="register-info">
+        <h1>Welcome to TALKS</h1>
+        <p>
+          Experience the finest. Join our exclusive community and start your
+          journey with us today. Already a member?
+          <a href="/login">Login here</a>
+        </p>
+      </div>
+
+      <!-- Right Side - Registration Form -->
+      <div class="register-form">
+        <h2>Create an Account</h2>
+        {% with messages = get_flashed_messages(with_categories=true) %} {% if
+        messages %}
+        <div class="flash-messages">
+          {% for category, message in messages %}
+          <div class="flash {{ category }}">{{ message }}</div>
+          {% endfor %}
+        </div>
+        {% endif %} {% endwith %}
+        <form action="/register" method="POST">
+          <input type="text" name="username" placeholder="Full Name" required />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email Address"
+            required
+            pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+          />
+          <div class="contact-container">
+            <select
+              name="country_code"
+              required
+              id="country_code"
+              class="form-control"
+            >
+              <option value="+1">US</option>
+              <option value="+44">UK</option>
+              <option value="+91">IN</option>
+              <option value="+61">AU</option>
+              <option value="+1">CA</option>
+              <option value="+81">JP</option>
+              <option value="+86">CN</option>
+              <option value="+49">DE</option>
+              <option value="+33">FR</option>
+              <option value="+39">IT</option>
+              <option value="+55">BR</option>
+              <option value="+34">ES</option>
+              <option value="+7">RU</option>
+              <option value="+52">MX</option>
+              <option value="+27">ZA</option>
+              <option value="+46">SE</option>
+              <option value="+31">NL</option>
+              <option value="+82">KR</option>
+              <option value="+41">CH</option>
+              <option value="+64">NZ</option>
+              <option value="+65">SG</option>
+              <option value="+32">BE</option>
+              <option value="+47">NO</option>
+              <option value="+30">GR</option>
+              <option value="+45">DK</option>
+              <option value="+48">PL</option>
+              <option value="+34">AR</option>
+              <option value="+971">AE</option>
+              <option value="+20">EG</option>
+              <option value="+90">TR</option>
+              <option value="+60">MY</option>
+              <option value="+63">PH</option>
+              <option value="+66">TH</option>
+              <option value="+58">VE</option>
+              <option value="+43">AT</option>
+              <option value="+353">IE</option>
+              <option value="+351">PT</option>
+              <option value="+972">IL</option>
+              <option value="+598">UY</option>
+              <option value="+380">UA</option>
+              <option value="+351">PT</option>
+              <option value="+679">FJ</option>
+              <option value="+505">NI</option>
+              <option value="+968">OM</option>
+              <option value="+263">ZW</option>
+              <option value="+212">MA</option>
+              <option value="+62">ID</option>
+              <option value="+356">MT</option>
+              <option value="+350">GI</option>
+              <option value="+57">CO</option>
+              <option value="+507">PA</option>
+              <option value="+66">TH</option>
+              <option value="+886">TW</option>
+              <option value="+372">EE</option>
+              <option value="+370">LT</option>
+              <option value="+375">BY</option>
+              <option value="+94">LK</option>
+              <option value="+63">PH</option>
+              <option value="+65">SG</option>
+              <option value="+62">ID</option>
+              <option value="+86">CN</option>
+              <option value="+91">IN</option>
+              <option value="+93">AF</option>
+              <option value="+960">MV</option>
+              <option value="+90">TR</option>
+              <option value="+994">AZ</option>
+              <option value="+964">IQ</option>
+              <option value="+961">LB</option>
+              <option value="+92">PK</option>
+              <option value="+98">IR</option>
+              <option value="+92">PK</option>
+              <option value="+880">BD</option>
+            </select>
+            <input
+              type="number"
+              name="contact_number"
+              placeholder="Contact Number"
+              pattern="[0-9]{10}"
+              required
+            />
+          </div>
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+            id="password"
+          />
+          <div class="password-strength" id="password-strength"></div>
+          <input
+            type="password"
+            name="confirm_password"
+            placeholder="Confirm Password"
+            required
+            id="confirm-password"
+          />
+
+          <button type="submit">Register</button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      // Password strength indicator logic
+      const passwordField = document.getElementById("password");
+      const confirmPasswordField = document.getElementById("confirm-password");
+      const strengthIndicator = document.getElementById("password-strength");
+
+      passwordField.addEventListener("input", () => {
+        const password = passwordField.value;
+        let strength = "Weak";
+
+        if (
+          password.length > 8 &&
+          /[A-Z]/.test(password) &&
+          /[0-9]/.test(password)
+        ) {
+          strength = "Strong";
+        } else if (password.length > 6) {
+          strength = "Medium";
+        }
+
+        strengthIndicator.textContent = `Password Strength: ${strength}`;
+        strengthIndicator.style.display = "block";
+      });
+
+      confirmPasswordField.addEventListener("input", () => {
+        if (confirmPasswordField.value !== passwordField.value) {
+          confirmPasswordField.setCustomValidity("Passwords do not match.");
+        } else {
+          confirmPasswordField.setCustomValidity("");
+        }
+      });
+    </script>
+  </body>
+</html>

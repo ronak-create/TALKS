@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta property="og:url" content="{{ url_for('search') }}" />
+    <link rel="canonical" href="https://talks.pythonanywhere.com/search" />
+    {% include 'link-href.html' %}
+    <title>Search Users</title>
+
+    <!-- Include jQuery for AJAX -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+
+  <style>
+    .users {
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .users input{
+      border-radius: 50px;
+    }
+    .user-section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .user-card {
+      background-color: #fff;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .user-card h2 {
+      font-size: 1.5em;
+      color: #4169e1;
+    }
+
+    .user-card p {
+      font-size: 1em;
+      color: #555;
+      text-align: center;
+      margin-bottom: 15px;
+      background: lightgray;
+      border-radius: 50px;
+      padding: 5px 10px;
+    }
+
+    .user-card:hover {
+      background-color: #f0f8ff;
+      cursor: pointer;
+    }
+
+    .search-bar {
+      width: 100%;
+      margin-bottom: 20px;
+      padding: 10px;
+      font-size: 1.2em;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .user-section {
+        width: 100%;
+      }
+    }
+  </style>
+
+  <body>
+    {% include 'main-header.html' %}
+
+    <div class="container main-content">
+      {% include 'left-bar.html' %}
+      <div class="users">
+        <input
+          type="text"
+          id="searchBar"
+          class="search-bar"
+          placeholder="Search people"
+        />
+        <div class="user-section" id="userSection">
+            {% if users %}
+              {% for user in users %}
+                <div class="user-card" data-username="{{user.username}}" id="user-{{ user.id }}" >
+                  <h2>{{ user.username }}</h2>
+                </div>
+              {% endfor %}
+            {% endif %}
+          </div>
+          
+      </div>
+    </div>
+
+    {% include 'footer.html' %}
+
+    <script>
+      $(document).ready(function () {
+        // var allUsers = []; // Array to store all user data initially
+
+        // // Function to fetch all users initially
+
+        // // Function to display users in the HTML
+        // function displayUsers(users) {
+        //   var usersHtml = "";
+        //   users.forEach(function (user) {
+        //     usersHtml += `
+        //       <div class="user-card" id="${user.id}">
+        //         <h2>${user.username}</h2>
+        //         <p>Joined: ${user.created_at}</p>
+        //       </div>
+        //     `;
+        //   });
+        //   $("#userSection").html(usersHtml);
+        // }
+
+        // Function to filter users based on the search input
+        function filterUsers() {
+          var searchValue = $("#searchBar").val().toLowerCase();
+          var filteredUsers = allUsers.filter(function (user) {
+            return user.username.toLowerCase().includes(searchValue);
+          });
+          displayUsers(filteredUsers); // Display only the filtered users
+        }
+
+        // Load all users initially when the page is ready
+
+        // Bind the search bar input event to filter users dynamically
+        $("#searchBar").on("input", function () {
+          filterUsers();
+        });
+      });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+$(document).ready(function() {
+    $('.user-card').on('click', function(event) {
+        // Prevent the default anchor tag behavior
+        event.preventDefault();
+        
+        var username = $(this).data('username');
+        var currentUrl = window.location.pathname;
+        console.log(currentUrl);
+        
+        // Only redirect if the current URL is not the profile page for the user
+        if (currentUrl !== '/profile/' + username) {
+            window.location.href = '/profile/' + username;
+        } else {
+            // Reload the page if the URL is the same (to reset or refresh)
+            window.location.reload();
+        }
+    });
+});
+    </script>
+  </body>
+</html>

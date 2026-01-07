@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-W5KT34BL");
+    </script>
+    <!-- End Google Tag Manager -->
+    <meta property="og:url" content="{{ url_for('trending') }}" />
+    <link rel="canonical" href="https://talks.pythonanywhere.com/trending" />
+    {% include 'link-href.html' %}
+    <title>Trending</title>
+
+    <!-- Include jQuery for AJAX -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-JNQLWEHE26"
+  ></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-JNQLWEHE26");
+  </script>
+  <style>
+    .trendings {
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 40px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .trending-section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin: 20px;
+    }
+
+    .trend-card {
+      background-color: #fff;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .trend-card h2 {
+      font-size: 1.2em;
+      color: #4169e1;
+    }
+
+    .trend-card p {
+      font-size: 1em;
+      color: #555;
+      text-align: center;
+      margin-bottom: 15px;
+      background: lightgray;
+      border-radius: 50px;
+      padding: 5px 10px;
+    }
+
+    .trend-card button {
+      background-color: #4169e1;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+    }
+
+    .hashtag-link {
+      text-decoration: none;
+    }
+
+    .trend-card:hover {
+      background-color: #f0f8ff;
+      cursor: pointer;
+    }
+
+    .search-bar {
+      width: 100%;
+      position: sticky;
+      margin-bottom: 20px;
+      padding: 10px;
+      font-size: 1.2em;
+      top: 130px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      background: #fff;
+      z-index: 1000; /* Ensure the search bar stays on top of other content */
+    }
+
+    .trendings input{
+      border-radius: 50px;
+      padding: 10px;
+    }
+
+    .trendings input::placeholder{
+      padding: 5px;
+    }
+
+    @media (max-width: 768px) {
+      /* Responsive width adjustments */
+      .trendings {
+        width: 100%;
+      }
+
+      .trending-section {
+        width: 100%;
+      }
+
+      .trend-card {
+        padding: 15px;
+        gap: 15px;
+      }
+
+      .trend-card h2 {
+        font-size: 1em;
+      }
+
+      .trend-card p {
+        font-size: 0.9em;
+        padding: 8px 12px;
+        margin-bottom: 10px;
+      }
+
+      .trend-card button {
+        padding: 8px 15px;
+        font-size: 0.9em;
+      }
+
+      .search-bar {
+        font-size: 1em;
+        padding: 8px;
+        top: 160px;
+      }
+    }
+  </style>
+
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-W5KT34BL"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    {% include 'main-header.html' %}
+
+    <div class="container main-content">
+      {% include 'left-bar.html' %}
+      <div class="trendings">
+        <input
+          type="text"
+          id="searchBar"
+          class="search-bar"
+          placeholder="Top Trending Hashtags"
+        />
+        <div class="trending-section" id="trendingSection">
+          <!-- Search Bar -->
+
+          <!-- Initially empty, will be filled by AJAX -->
+        </div>
+      </div>
+    </div>
+
+    {% include 'footer.html' %}
+
+    <script>
+      $(document).ready(function () {
+        // Function to fetch trending hashtags using AJAX
+        function loadTrendingHashtags() {
+          $.ajax({
+            url: "{{ url_for('trending_hashtags') }}", // The Flask route for trending hashtags
+            method: "GET",
+            success: function (data) {
+              console.log(data);
+              var hashtagsHtml = "";
+              // Loop through each hashtag and create the HTML for it
+              data.forEach(function (hashtag) {
+                hashtagsHtml += `
+                  <div class="trend-card hashtag-link" id="${hashtag.tag}" data-tag="${hashtag.tag}">
+                    <h2>${hashtag.tag}</h2>
+                    <p>${hashtag.count}</p>
+                  </div>
+                `;
+              });
+              // Update the trending section with the generated HTML
+              $("#trendingSection").html(hashtagsHtml);
+            },
+            error: function (xhr, status, error) {
+              console.error("Error fetching trending hashtags: " + error);
+            },
+          });
+        }
+
+        // Function to filter the hashtags based on the search input
+        function filterHashtags() {
+          var searchValue = $("#searchBar").val().toLowerCase();
+          $(".trend-card").each(function () {
+            var hashtagText = $(this).find("h2").text().toLowerCase();
+            if (hashtagText.indexOf(searchValue) !== -1) {
+              $(this).show();
+            } else {
+              $(this).hide();
+            }
+          });
+        }
+
+        // Load the trending hashtags when the page is ready
+        loadTrendingHashtags();
+
+        // Bind the search bar input event to filter hashtags
+        $("#searchBar").on("input", function () {
+          filterHashtags();
+        });
+
+        $(document).on("click", ".hashtag-link", function (e) {
+          e.preventDefault(); // Prevent default link behavior
+
+          var tag = $(this).data("tag"); // Get the tag from the data attribute
+          // Make an AJAX call to the 'trending' route
+          $.ajax({
+            url: "/hashtags/" + tag.substring(1), // The URL to redirect to
+            type: "GET", // GET request to fetch the trending page
+            success: function (response) {
+              // On success, change the window location to the new URL
+              window.location.href = "/hashtags/" + tag.substring(1); // Redirect to the new page
+            },
+            error: function (xhr, status, error) {
+              console.log("Error:", error);
+            },
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-W5KT34BL");
+    </script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Join TALKS, the exclusive community to enhance your skills and network."
+    />
+    <meta property="og:title" content="Login - TALKS" />
+    <meta
+      property="og:description"
+      content="Join TALKS and start your journey today. It's an exclusive community to learn and grow."
+    />
+    <meta
+      property="og:image"
+      content="{{ url_for('static', filename='images/icon.png') }}"
+    />
+    <meta property="og:url" content="{{ url_for('login') }}" />
+    <meta name="TALKS:card" content="summary_large_image" />
+    <meta name="TALKS:title" content="Login - TALKS" />
+    <meta
+      name="TALKS:description"
+      content="Join TALKS today and engage with community of mindful people!"
+    />
+    <meta
+      name="TALKS:image"
+      content="{{ url_for('static', filename='images/icon.png') }}"
+    />
+    <link rel="canonical" href="https://talks.pythonanywhere.com/login" />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='images/icon.png') }}"
+      type="image/x-icon"
+    />
+    <title>Login - TALKS</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+  </head>
+  <!-- Google tag (gtag.js) -->
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-JNQLWEHE26"
+  ></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-JNQLWEHE26");
+  </script>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #2a2a72;
+      color: #2a2a72;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    /* Main Container */
+    .main-container {
+      display: flex;
+      max-width: 900px;
+      width: 100%;
+      background-color: #1f1f77;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      border-radius: 12px;
+      overflow: hidden;
+      opacity: 0;
+      animation: fadeIn 1.5s ease forwards;
+    }
+
+    /* Left Column */
+    .left-column {
+      flex: 1;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-color: #3e3ebf;
+    }
+
+    .left-column h1 {
+      font-size: 2.8rem;
+      font-weight: bold;
+      color: #ffffff;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+      margin-bottom: 20px;
+    }
+
+    .left-column p {
+      font-size: 1.1rem;
+      color: #fff;
+      margin-bottom: 30px;
+    }
+
+    .left-column a {
+      color: #3e3ebf;
+      font-weight: 600;
+      text-decoration: none;
+      background-color: #5c6bc0;
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+
+    .left-column a:hover {
+      background-color: #2a2a72;
+    }
+
+    /* Divider Line */
+    .divider-line {
+      width: 2px;
+      background-color: #5c6bc0;
+    }
+
+    /* Right Column */
+    .right-column {
+      flex: 1;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-color: #1f1f77;
+    }
+
+    .right-column h2 {
+      font-size: 2rem;
+      color: #f5f5f5;
+      text-align: center;
+      margin-bottom: 30px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .right-column form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 15px 0;
+      background-color: #2a2a72;
+      border: 1px solid #5c6bc0;
+      border-radius: 8px;
+      color: #f5f5f5;
+      font-size: 1rem;
+      transition: background-color 0.5s;
+      animation: gunLoadEffect 1.2s ease forwards;
+      opacity: 0;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      background-color: #3e3ebf;
+      outline: none;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      background-color: #5c6bc0;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+      animation: fadeIn 1.5s ease forwards;
+      opacity: 0;
+      margin-top: 20px;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #2a2a72;
+      transform: scale(1.02);
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes gunLoadEffect {
+      0% {
+        width: 0;
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        width: 100%;
+        opacity: 1;
+      }
+    }
+    
+    /* Responsive Styling */
+    .header {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 10; /* Ensure logo is on top of other elements */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Logo Styling */
+    .logo {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: bold;
+      font-size: 48px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #fff; /* White text */
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+      border-radius: 10px;
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Already Logged In Button */
+    #checkLoginStatus {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      background-color: #2a2a72;
+      color: #f5f5f5;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+      text-align: center;
+      animation: fadeIn 1.5s ease forwards;
+      opacity: 0;
+    }
+
+    #checkLoginStatus:hover {
+      background-color: #2a2a72;
+      color: #e3efd3;
+      transform: scale(1.02);
+    }
+    @media (max-width: 768px) {
+      .main-container {
+        flex-direction: column;
+      }
+      .divider-line {
+        display: none;
+      }
+      .left-column,
+      .right-column {
+        padding: 20px;
+      }
+    }
+
+  </style>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-W5KT34BL"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <header class="header">
+      <div class="logo">TALKS</div>
+    </header>
+    <div class="main-container">
+      <!-- Left Column with Welcome Text -->
+      <div class="left-column">
+        <h1>Welcome Back</h1>
+        <p>New here? Join us for an elevated experience.</p>
+        <a href="{{ url_for('register') }}">Create an Account</a>
+      </div>
+
+      <!-- Divider Line -->
+      <div class="divider-line"></div>
+
+      <!-- Right Column with Login Form -->
+      <div class="right-column">
+        <h2>Login</h2>
+        <form action="{{ url_for('login') }}" method="POST">
+          <input
+            type="text"
+            name="username"
+            placeholder="Username or Email"
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+          />
+          <button type="submit">Login</button>
+        </form>
+        <button type="button" id="checkLoginStatus">Already a member</button>
+      </div>
+    </div>
+    <script>
+      document.getElementById("checkLoginStatus").onclick = function () {
+        // This will be a simple check if the user session exists. Adjust as needed.
+        fetch("/check_session") // Endpoint in your backend that verifies session
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.is_logged_in) {
+              // Redirect if logged in
+              window.location.href = "/home"; // Adjust to the logged-in page
+            } else {
+              alert("You're not logged in. Please log in to continue.");
+            }
+          })
+          .catch((error) => console.error("Error:", error));
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta property="og:url" content="{{ url_for('home') }}" />
+    <link rel="canonical" href="https://talks.pythonanywhere.com/home" />
+    {%include 'link-href.html'%}
+    <title>TALKS</title>
+  </head>
+  <!-- Google tag (gtag.js) -->
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-JNQLWEHE26"
+  ></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-JNQLWEHE26");
+  </script>
+  <style>
+    .perks{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px 10px;
+      border-radius: 12px;
+      background: #aed9ff;
+      margin:  0 20px;
+    }
+    .perks p{
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-W5KT34BL"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    {%include 'main-header.html'%}
+    <div class="container main-content">
+      <div class="content-area">
+        {%include 'left-bar.html' %}
+
+        <!-- Left Column: Post Feed -->
+        <section class="post-feed">
+          <div class="post-card">
+            <form action="{{ url_for('create_post') }}" method="POST">
+              <textarea
+                name="content"
+                placeholder="What's happening?"
+                required
+              ></textarea>
+              <button type="submit" class="btn">Spread Wisdom</button>
+            </form>
+          </div>
+          {% for post in posts %} {% include 'post.html' %} {% endfor %}
+        </section>
+
+        <!-- Right Column: Sidebar with trends, etc. -->
+        <aside class="sidebar">
+          <div class="trending">
+            <h4>Trending Topics</h4>
+            <ul id="trending-topics-list"></ul>
+          </div>
+          <div class="people-suggestions">
+            <h4>Suggestions</h4>
+            <ul></ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+    {%include 'footer.html'%}
+    <script>
+      $(document).ready(function () {
+        // Toggle options menu when options button is clicked
+        $(".options-btn").click(function (e) {
+          e.stopPropagation(); // Prevents event bubbling
+          $(".options-menu").hide();
+          var post_id = $(this).data("post-id");
+          $("#options-menu-" + post_id).toggle();
+        });
+
+        // Open the edit modal on "Edit Post" click
+        $(".edit-post").click(function (e) {
+          e.preventDefault();
+          e.stopPropagation(); // Prevents menu from toggling off
+          var post_id = $(this).data("post-id");
+          $("#editModal_" + post_id).show(); // Shows the specific modal
+        });
+
+        $(".report-post").click(function (e) {
+          e.preventDefault();
+          var post_id = $(this).data("post-id");
+          $.post("/report_post/" + post_id, function (data) {
+            alert("Report submitted. Thank you for your feedback.");
+          });
+        });
+
+        // Close the modal when "X" button is clicked
+        $(".close").click(function () {
+          var post_id = $(this).data("post-id");
+          $("#editModal_" + post_id).hide(); // Hides the specific modal
+        });
+
+        // Close the modal when clicking outside of it
+        $(window).click(function (e) {
+          if ($(e.target).hasClass("modal")) {
+            $(".modal").hide(); // Hides any open modal
+          }
+        });
+
+        // Hide the options menu if clicked anywhere outside the menu
+        $(document).click(function (e) {
+          if (!$(e.target).closest(".post-options").length) {
+            $(".options-menu").hide(); // Hide all options menus
+          }
+        });
+
+        // Prevent the options menu from closing when clicking inside it
+        $(".options-menu").click(function (e) {
+          e.stopPropagation(); // Prevents event bubbling
+        });
+
+        // Toggle comment section visibility
+        $(".comment-toggle").click(function () {
+          var post_id = $(this).data("post-id");
+          $("#comments_" + post_id).toggle();
+        });
+
+        // Like or Unlike post
+        $(".like-post").click(function () {
+          var post_id = $(this).data("post-id");
+          $.post("/like_post/" + post_id, function (data) {
+            if (data.action == "liked") {
+              $("button.like-post[data-post-id='" + post_id + "'] p").text(
+                data.like_count
+              );
+              $("i.fa-heart[data-post-id='" + post_id + "']").addClass(
+                "fa-solid"
+              );
+              $("button.like-post[data-post-id='" + post_id + "']").addClass(
+                "liked"
+              );
+            } else {
+              $("button.like-post[data-post-id='" + post_id + "'] p").text(
+                data.like_count
+              );
+              $("i.fa-heart[data-post-id='" + post_id + "']").removeClass(
+                "fa-solid"
+              );
+              $("button.like-post[data-post-id='" + post_id + "']").removeClass(
+                "liked"
+              );
+            }
+          });
+        });
+
+        // Like or Unlike comment
+        $(".like-comment").click(function () {
+          var comment_id = $(this).data("comment-id");
+          $.post("/like_comment/" + comment_id, function (data) {
+            if (data.action == "liked") {
+              $(
+                "button.like-comment[data-comment-id='" + comment_id + "'] p"
+              ).text(data.like_count);
+              $("i.fa-heart[data-comment-id='" + comment_id + "']").addClass(
+                "fa-solid"
+              );
+              $(
+                "button.like-comment[data-comment-id='" + comment_id + "']"
+              ).addClass("liked");
+            } else {
+              $(
+                "button.like-comment[data-comment-id='" + comment_id + "'] p"
+              ).text(data.like_count);
+              $("i.fa-heart[data-comment-id='" + comment_id + "']").removeClass(
+                "fa-solid"
+              );
+              $(
+                "button.like-comment[data-comment-id='" + comment_id + "']"
+              ).removeClass("liked");
+            }
+          });
+        });
+        // Delete post functionality
+        $(".delete-post").click(function (e) {
+          e.preventDefault(); // Prevent default behavior
+          var post_id = $(this).data("post-id");
+
+          // Confirm deletion
+          if (confirm("Are you sure you want to delete this post?")) {
+            $.ajax({
+              url: "/delete_post/" + post_id, // Backend route to handle the deletion
+              type: "POST",
+              success: function (data) {
+                if (data.success) {
+                  $("#post-" + post_id).remove(); // Removes the post from the DOM
+                  $(".options-menu").hide(); // Hide the options menu if it's open
+                } else {
+                  alert("Failed to delete post.");
+                }
+              },
+              error: function () {
+                alert("Error occurred while deleting post.");
+              },
+            });
+          }
+        });
+        $.ajax({
+          url: "/trending_hashtags",
+          method: "GET",
+          success: function (data) {
+            $("#trending-topics-list").empty(); // Clear the current list
+
+            // Loop through the hashtags and add clickable links with redirects
+            data.slice(0, 5).forEach(function (hashtag) {
+              $("#trending-topics-list").append(
+                `<li><a href="/hashtags/${hashtag.tag.substring(
+                  1
+                )}" >${hashtag.tag} (${hashtag.count})</a></li>`
+              );
+            });
+          },
+          error: function (error) {
+            console.log("Error:", error);
+          },
+        });
+
+        //   $(document).on('click', '.hashtag-link', function(e) {
+        //     e.preventDefault();  // Prevent default link behavior
+
+        //     var tag = $(this).data('tag');  // Get the tag from the data attribute
+        //     // Make an AJAX call to the 'trending' route
+        //     $.ajax({
+        //         url: tag.substring(1),  // The URL to redirect to
+        //         type: 'GET',  // GET request to fetch the trending page
+        //         success: function(response) {
+        //             // On success, change the window location to the new URL
+        //             window.location.href = tag.substring(1);  // Redirect to the new page
+        //         },
+        //         error: function(xhr, status, error) {
+        //             console.log('Error:', error);
+        //         }
+        //     });
+        // });
+      });
+    </script>
+  </body>
+</html>

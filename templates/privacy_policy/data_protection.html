@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section class="data-protection-section">
+        <h2>Data Protection and Security</h2>
+        <p>
+            TALKS is dedicated to safeguarding the privacy and security of your personal data. We employ a range of security measures and data protection policies to protect your information from unauthorized access, alteration, and destruction. Below are the key security practices we follow:
+        </p>
+
+        <h3>1. Data Encryption</h3>
+        <p>
+            To ensure your sensitive data is fully protected, TALKS employs strong encryption protocols both during data transmission and at rest. This means that any personal information exchanged between your device and our platform is encrypted using industry-standard security algorithms. Encryption is essential to prevent unauthorized third parties from intercepting or accessing your data while it’s being transferred or stored on our servers.
+        </p>
+
+        <h3>2. Secure Access Controls</h3>
+        <p>
+            Access to personal data within TALKS is strictly controlled. Only authorized personnel, who are trained in data protection practices, have access to sensitive data. We implement role-based access controls (RBAC) to ensure that employees can only access the information necessary to perform their duties. Additionally, we conduct regular audits to ensure compliance with our data protection policies, which helps identify and address potential security vulnerabilities.
+        </p>
+
+        <h3>3. Incident Management</h3>
+        <p>
+            In the unlikely event of a data breach or security incident, TALKS follows a robust incident management protocol. This includes immediate containment, investigation, and mitigation of the breach to minimize potential risks to your data. We will notify affected users promptly and provide clear instructions on the next steps, including any necessary actions you may need to take to secure your account. We also work with cybersecurity experts to prevent future incidents and continuously improve our security posture.
+        </p>
+
+        <h3>4. Regular Security Audits</h3>
+        <p>
+            To ensure ongoing protection, TALKS regularly performs security audits and vulnerability assessments on its systems. These audits are conducted by external security firms to evaluate the effectiveness of our security measures and identify areas for improvement. By staying ahead of emerging threats, we can ensure that your data remains safe and secure.
+        </p>
+
+        <h3>5. Two-Factor Authentication (2FA)</h3>
+        <p>
+            To further enhance security, TALKS offers two-factor authentication (2FA) for user accounts. This optional feature requires users to provide an additional authentication code, sent to their mobile device or email, in addition to their password. By enabling 2FA, users add an extra layer of protection to their accounts, making it more difficult for unauthorized individuals to gain access, even if they have obtained the password.
+        </p>
+
+        <p>
+            At TALKS, we take data security seriously and continually strive to maintain the highest standards of protection. If you have any questions or concerns about our data protection measures, please don't hesitate to contact us.
+        </p>
+
+        <p>
+            For more detailed information on how we handle and protect your data, please refer to our 
+            <a href="{{ url_for('privacy_policy') }}">Privacy Policy Overview</a>.
+        </p>
+    </section>
+
+    <style>
+.data-protection-section {
+    font-family: Arial, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.data-protection-section h2 {
+    font-size: 28px;
+    color: #28a745;
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.data-protection-section h3 {
+    font-size: 22px;
+    color: #28a745;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.data-protection-section p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.data-protection-section ul {
+    padding-left: 20px;
+    font-size: 16px;
+    color: #333;
+}
+
+.data-protection-section ul li {
+    margin-bottom: 10px;
+}
+
+.data-protection-section a {
+    color: #16a085;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.data-protection-section a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .data-protection-section {
+        max-width: 90%;
+        padding: 20px;
+        text-wrap: wrap;
+        padding-bottom: 40px;
+    }
+
+    .data-protection-section h2 {
+        font-size: 24px;
+    }
+
+    .data-protection-section h3 {
+        font-size: 18px;
+    }
+
+    .data-protection-section p {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .data-protection-section ul {
+        font-size: 14px;
+    }
+
+    .data-protection-section ul li {
+        margin-bottom: 8px;
+    }
+
+    .data-protection-section a {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .data-protection-section {
+        max-width: 95%;
+        padding: 15px;
+        padding-bottom: 40px;
+    }
+
+    .data-protection-section h2 {
+        font-size: 20px;
+    }
+
+    .data-protection-section h3 {
+        font-size: 16px;
+    }
+
+    .data-protection-section p {
+        font-size: 13px;
+    }
+
+    .data-protection-section ul {
+        font-size: 13px;
+    }
+
+    .data-protection-section ul li {
+        margin-bottom: 6px;
+    }
+
+    .data-protection-section a {
+        font-size: 13px;
+    }
+}
+
+    </style>
+{% endblock %}

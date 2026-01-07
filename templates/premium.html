@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% include 'link-href.html' %}
+    <title>Premium Subscription</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f9f9f9;
+      }
+
+      .container {
+        width: 100%;
+      }
+
+      .premium-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 30px;
+        margin-top: 50px;
+        width: 90%;
+        height: auto;
+      }
+
+      .premium-header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .premium-header h1 {
+        font-size: 2em;
+        color: #4169e1;
+      }
+
+      .premium-header p {
+        font-size: 1.2em;
+        color: #555;
+      }
+      
+      .premium-container p a{
+        color: #4169e1;
+      }
+
+      .pack-info {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin: 30px 0;
+      }
+
+      .pack-card {
+        background-color: rgba(212, 212, 212, 0.373);
+        padding: 20px;
+        width: 30%;
+        height: 400px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        border: 1px solid #4169e1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        overflow: hidden;
+        z-index: 20;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease-in-out;
+      }
+
+      .pack-card .pack-card-header,
+      .pack-card .pack-card-info,
+      .pack-card .pack-card-subscribe {
+        padding: 0 10px;
+        width: 100%;
+      }
+      .pack-card .pack-card-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .pack-card .pack-card-info {
+        min-height: 150px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+      .pack-card:nth-child(2) {
+        background: #def0c5;
+      }
+
+      .pack-card:nth-child(3) {
+        background: #d1b3ff;
+      }
+
+      .pack-card::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 200%;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.493);
+        transform: translate(-60%, -60%) rotate(-55deg);
+        transition: transform 0.4s ease-in-out;
+        outline: 5px solid rgba(255, 255, 255, 0.493);
+        outline-offset: 10px;
+        z-index: 10;
+      }
+
+      .pack-card:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        transform: scale(1.05);
+      }
+      .pack-card h4 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+      }
+
+      .pack-card:nth-child(2):hover {
+        background-color: rgba(222, 240, 197, 0.5);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        transform: scale(1.05);
+      }
+      .pack-card:nth-child(3):hover {
+        background-color: rgba(209, 179, 255, 0.5);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        transform: scale(1.05);
+      }
+
+      .pack-card:hover::before {
+        transform: translate(100%, 100%) rotate(-55deg);
+      }
+
+      .pack-card h3 {
+        font-size: 1.5em;
+        color: #4169e1;
+      }
+
+      .pack-card p {
+        font-size: 1em;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #555;
+      }
+
+      .btn-redeem {
+        background-color: #4169e1;
+        color: white;
+        padding: 12px 20px;
+        font-size: 1.2em;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-top: 20px;
+        justify-self: end !important;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .btn-redeem:hover {
+        background-color: #365ac1;
+      }
+
+      .back-button {
+        position: absolute;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 20px;
+        font-size: 1.5rem;
+        left: 10px;
+        color: #000;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+      }
+
+      .back-button i {
+        margin-right: 8px;
+      }
+
+      @media (max-width: 768px) {
+        .pack-info {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .pack-card {
+          width: 90%;
+          height: 300px;
+          margin-bottom: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    {% include 'main-header.html' %}
+    <main class="main-content premium-container">
+      <div class="premium-container">
+        <div class="premium-header">
+          <a href="javascript:history.back()" class="back-button">
+            <i class="fa-solid fa-chevron-left"></i> 
+          </a>
+          <h1>Unlock Premium Features</h1>
+          <p>
+            Get access to exclusive perks and premium features for an enhanced
+            experience.
+          </p>
+        </div>
+        <div class="pack-info">
+          <div class="pack-card">
+            <div class="pack-card-headr">
+              <h3>Basic</h3>
+              <h4>99 $ / month</h4>
+            </div>
+            <div class="pack-card-info">
+              <p>Basics notation<i class="fa-solid fa-check"></i></p>
+              <p>
+                Get daily Login perks<i class="fa-solid fa-circle-info"></i
+                ><i class="fa-solid fa-check"></i>
+              </p>
+              <p>Highlighted account<i class="fa-solid fa-check"></i></p>
+            </div>
+            <div class="pack-card-subscribe">
+              <a href="#" class="btn-redeem">Subscribe</a>
+            </div>
+          </div>
+          <div class="pack-card">
+            <div class="pack-card-headr">
+              <h3>Premium</h3>
+              <h4>99 $ / month</h4>
+            </div>
+            <div class="pack-card-info">
+              <p>Premium notation<i class="fa-solid fa-check"></i></p>
+              <p>
+                Get daily Login perks<i class="fa-solid fa-circle-info"></i
+                ><i class="fa-solid fa-check"></i>
+              </p>
+              <p>
+                Monthly streak reward<i class="fa-solid fa-circle-info"></i
+                ><i class="fa-solid fa-check"></i>
+              </p>
+              <p>Additional 3 accounts <i class="fa-solid fa-check"></i></p>
+            </div>
+            <div class="pack-card-subscribe">
+              <a href="#" class="btn-redeem">Subscribe</a>
+            </div>
+          </div>
+          <div class="pack-card">
+            <div class="pack-card-headr">
+              <h3>Exclusive</h3>
+              <h4>2999 $ / month</h4>
+            </div>
+            <div class="pack-card-info">
+              <p>Exclusive notation<i class="fa-solid fa-check"></i></p>
+              <p>
+                Get daily Login perks<i class="fa-solid fa-circle-info"></i
+                ><i class="fa-solid fa-check"></i>
+              </p>
+              <p>
+                Monthly streak reward<i class="fa-solid fa-circle-info"></i
+                ><i class="fa-solid fa-check"></i>
+              </p>
+              <p>
+                Additional multiple accounts<i class="fa-solid fa-check"></i>
+              </p>
+              <p>Thoughts purchase request<i class="fa-solid fa-check"></i></p>
+            </div>
+            <div class="pack-card-subscribe">
+              <a href="#" class="btn-redeem">Subscribe</a>
+            </div>
+          </div>
+        </div>
+        <p>
+          Buy Subscribing to any pach you agree to our
+          <a href="#">Purchase Terms and conditions</a>
+        </p>
+        <p>Can be cancelled anytime</p>
+      </div>
+    </main>
+    {%include 'footer.html'%}
+  </body>
+</html>

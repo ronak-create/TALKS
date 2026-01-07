@@ -1,0 +1,310 @@
+<!-- settings.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+              <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-W5KT34BL');</script>
+  <!-- End Google Tag Manager -->
+    <meta property="og:url" content="{{ url_for('home') }}" />
+    <link rel="canonical" href="https://talks.pythonanywhere.com/home" />
+    {%include 'link-href.html'%}
+    <title>TALKS</title>
+  </head>
+    <meta property="og:url" content="{{ url_for('settings') }}" />
+    <link rel="canonical" href="https://talks.pythonanywhere.com/settings" />
+
+    {%include 'link-href.html'%}
+    <title>Settings</title>
+  </head>
+  <!-- Google tag (gtag.js) -->
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-JNQLWEHE26"
+  ></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-JNQLWEHE26");
+  </script>
+  <style>
+.settings-section {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.setting-card {
+  padding: 10px;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.list-item:hover {
+  cursor: pointer;
+  transform: scale(1.01);
+}
+
+.setting-card h2 {
+  font-size: 1.5em;
+  color: #4169e1  ;
+}
+
+.setting-card button {
+  background-color: #4169e1;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.setting-card button:hover {
+  background-color: #315bb5;
+}
+
+/* Expandable content */
+.expandable-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  border-radius: 12px;
+  background: #fff;
+  display: flex;
+  /* align-items: center; */
+  justify-content: flex-start;
+  flex-direction: column;
+  transition: .3s ease;
+}
+
+.expandable-content.active {
+  padding:  10px 20px;  
+  max-height: 350px; /* Adjust based on content */
+}
+
+.setting-card .edit-option {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.edit-option {
+  display: none;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.expanded-form label {
+  font-size: 1.1em;
+  color: #4169e1;
+}
+
+.edit-option input[type="text"],
+.edit-option input[type="email"],
+.edit-option input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1em;
+}
+
+/* Mobile styling */
+@media (max-width: 768px) {
+  .settings-section {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .setting-card {
+    padding: 8px;
+  }
+
+  .list-item{
+    font-size: 1rem;
+  }
+
+  .setting-card h2 {
+    font-size: 1em;
+  }
+
+  .profile-section button {
+    padding: 8px 15px;
+    font-size: 1em;
+  }
+
+  .edit-option input[type="text"],
+  .edit-option input[type="email"],
+  .edit-option input[type="password"] {
+    padding: 8px;
+    font-size: 1em;
+  }
+
+  .expandable-content.active {
+    max-height: 500px; /* Adjust based on mobile content length */
+  }
+}
+
+  </style>
+  <body>
+        <!-- Google Tag Manager (noscript) -->
+        <noscript
+        ><iframe
+          src="https://www.googletagmanager.com/ns.html?id=GTM-W5KT34BL"
+          height="0"
+          width="0"
+          style="display: none; visibility: hidden"
+        ></iframe
+      ></noscript>
+      <!-- End Google Tag Manager (noscript) -->
+    {%include 'main-header.html'%}
+
+    <div class="container main-content">
+      {%include 'left-bar.html' %}
+      <div class="settings-section">
+        <div
+          class="setting-card"
+          onclick="toggleExpandableContent('profile-settings')"
+        >
+        <div class="list-item">
+          <h2>Profile Settings</h2>
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+          <div id="profile-settings" class="expandable-content" onclick="event.stopPropagation()">
+            <form action="{{ url_for('edit_profile') }}" method="POST">
+              <div class="edit-option">
+                Edit Username:
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  placeholder="New Username"
+                />
+              </div>
+              <div class="edit-option">
+                Edit Password:
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="New Password"
+                />
+              </div>
+              <div class="edit-option">
+                Confirm Password:
+                <input
+                  type="password"
+                  id="confirm_password"
+                  name="confirm_password"
+                  placeholder="Confirm Password"
+                />
+              </div>
+              <button type="submit">Save Changes</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="setting-card privacy-policy">
+          <div class="list-item">
+            <h2>Privacy Policy</h2>
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+          
+        </div>
+
+        <!-- <div class="setting-card">
+          <h2>Notification Preferences</h2>
+          <p>Manage email and push notifications.</p>
+          <button onclick="toggleExpandableContent('notification-preferences')">
+            Edit Notifications
+          </button>
+          <div id="notification-preferences" class="expandable-content">
+            <div class="edit-option">
+              <input type="checkbox" /> Email Notifications
+            </div>
+            <div class="edit-option">
+              <input type="checkbox" /> Push Notifications
+            </div>
+            <button>Save Changes</button>
+          </div>
+        </div> -->
+
+        <!-- <div class="setting-card">
+          <h2>Account Management</h2>
+          <p>Settings related to your account security.</p>
+          <button onclick="toggleExpandableContent('account-management')">
+            Manage Account
+          </button>
+          <div id="account-management" class="expandable-content">
+            <div class="edit-option">
+              Change Email: <input type="email" placeholder="New Email" />
+            </div>
+            <div class="edit-option">
+              Two-Factor Authentication: <button>Enable</button>
+            </div>
+            <button>Save Changes</button>
+          </div>
+        </div> -->
+      </div>
+    </div>
+
+    {%include 'footer.html'%}
+
+    <script>
+$("form").submit(function (event) {
+  const username = $("#username").val();
+  const password = $("#password").val();
+  const confirmPassword = $("#confirm_password").val();
+
+  if (password && password !== confirmPassword) {
+    event.preventDefault();
+    alert("Passwords do not match.");
+  } else if (!username && !password) {
+    event.preventDefault();
+    alert("At least one field must be filled.");
+  }
+});
+
+function toggleExpandableContent(id) {
+  const content = $("#" + id);
+  const icon = content.closest(".setting-card").find(".list-item .fa-solid");
+
+  content.toggleClass("active");
+  icon.toggleClass("fa-chevron-right fa-chevron-down"); // Rotate the icon
+}
+
+
+      $(document).ready(function () {
+        $(".setting-card.privacy-policy").click(function () {
+          // AJAX request to get the privacy policy URL
+          $.ajax({
+            url: "{{ url_for('privacy_policy') }}",
+            type: "GET",
+            success: function (response) {
+              // Redirect to the privacy policy page
+              window.location.href = "{{ url_for('privacy_policy') }}";
+            },
+            error: function () {
+              alert("Failed to load the Privacy Policy.");
+            },                                                             
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

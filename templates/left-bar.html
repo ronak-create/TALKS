@@ -1,0 +1,41 @@
+<aside class="leftbar">
+    <nav class="route">
+      <ul>
+        <li>
+          <a href="{{ url_for('home') }}">
+            <i class="fas fa-home"></i> <span>Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="{{ url_for('search') }}">
+            <i class="fa-solid fa-magnifying-glass"></i><span>Search</span>
+          </a>
+        </li>
+        <li>
+          <a href="{{ url_for('trending') }}">
+            <i class="fas fa-fire"></i> <span>Trending</span>
+          </a>
+        </li>
+        <li>
+          <a href="{{ url_for('get_perks') }}">
+            <i class="fa-solid fa-certificate"></i> <span>Get Perks</span>
+          </a>
+        </li>
+        <li>
+          <a href="{{ url_for('settings') }}">
+            <i class="fas fa-cog"></i> <span>Settings</span>
+          </a>
+        </li>
+        <li>
+          <a href="{{ url_for('premium') }}">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> <span>Premium</span>
+          </a>
+        </li>
+        <li>
+          <a href="{{ url_for('profile', username=session['username']) }}"
+            ><i class="fas fa-user"></i> <span>Profile</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </aside>

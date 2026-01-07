@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section class="user-rights-section">
+        <h2>Your Rights Regarding Your Data</h2>
+        <p>
+            As a TALKS user, you are empowered with specific rights concerning the personal data we collect and manage. We are committed to respecting and protecting your rights under applicable data protection laws. Below is an overview of the rights you have with regard to your data:
+        </p>
+
+        <h3>1. Access to Your Data</h3>
+        <p>
+            You have the right to request access to the personal data we hold about you. This includes the ability to receive a copy of the data we process. You can contact us at any time to inquire about the information we hold, and we will provide you with an accessible copy, usually in a commonly used electronic format. This right allows you to understand and verify the data we process about you.
+        </p>
+
+        <h3>2. Data Correction</h3>
+        <p>
+            If any of the personal data we hold about you is inaccurate or incomplete, you have the right to request corrections. Whether it's updating your contact details or fixing any erroneous information, we encourage you to notify us of any discrepancies. We are committed to ensuring that the data we hold is accurate and up-to-date, and we will promptly make the necessary adjustments.
+        </p>
+
+        <h3>3. Data Deletion</h3>
+        <p>
+            You have the right to request the deletion of your personal data under certain circumstances, such as when you close your TALKS account. If you feel that we no longer need to keep your data, or if you no longer want us to process your data, you can request its removal. However, please note that we may be required to retain certain data for legal or contractual obligations, even after your account is closed.
+        </p>
+
+        <h3>4. Data Portability</h3>
+        <p>
+            If you wish to move your personal data to another service provider, you have the right to request its transfer. This right allows you to obtain your data in a structured, commonly used, and machine-readable format, and to transmit it to another service where applicable. Data portability ensures that you can easily take your data to another service without obstacles.
+        </p>
+
+        <h3>5. Object to Processing</h3>
+        <p>
+            You have the right to object to the processing of your data under certain conditions. If you believe that the processing of your data is unfair or unjustified, you can raise an objection. We will review your request and provide you with an explanation of our reasoning for processing the data, or we will stop processing it if we no longer have a legitimate basis.
+        </p>
+
+        <h3>6. Withdraw Consent</h3>
+        <p>
+            In cases where we rely on your consent for data processing, you have the right to withdraw it at any time. For instance, if you previously consented to sharing your data with third-party services, you may withdraw that consent at any time. Once consent is withdrawn, we will cease processing your data for the specified purpose, unless we have another legal basis to continue processing.
+        </p>
+
+        <h3>7. Restriction of Processing</h3>
+        <p>
+            Under certain circumstances, you have the right to restrict the processing of your personal data. This means that we can store your data, but we will not use it further. This right may be exercised if you believe that the data is inaccurate, if the processing is unlawful, or if you object to the processing.
+        </p>
+
+        <p>
+            We aim to make it easy for you to exercise these rights. If you wish to exercise any of these rights, please contact us via the provided contact details. We will respond to your request within a reasonable timeframe and in accordance with applicable laws.
+        </p>
+
+        <p>
+            For more detailed information, you can refer to our 
+            <a href="{{ url_for('privacy_policy') }}">Privacy Policy Overview</a>.
+        </p>
+    </section>
+
+    <style>
+        .user-rights-section {
+    font-family: Arial, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.user-rights-section h2 {
+    font-size: 28px;
+    color: #28a745;
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.user-rights-section h3 {
+    font-size: 22px;
+    color: #28a745;
+    margin-top: 20px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.user-rights-section p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.user-rights-section a {
+    color: #16a085;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.user-rights-section a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .user-rights-section {
+        padding: 25px;
+        max-width: 90%;
+    }
+
+    .user-rights-section h2 {
+        font-size: 24px;
+    }
+
+    .user-rights-section h3 {
+        font-size: 20px;
+    }
+
+    .user-rights-section p {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .user-rights-section {
+        padding: 15px;
+        max-width: 95%;
+        text-wrap: wrap;
+        padding-bottom: 40px;
+    }
+
+    .user-rights-section h2 {
+        font-size: 20px;
+    }
+
+    .user-rights-section h3 {
+        font-size: 18px;
+    }
+
+    .user-rights-section p {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+    </style>
+{% endblock %}
