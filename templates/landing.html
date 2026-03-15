@@ -1,243 +1,542 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-          <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-W5KT34BL');</script>
-  <!-- End Google Tag Manager -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-W5KT34BL');</script>
+    <!-- End Google Tag Manager -->
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Join TALKS, the exclusive community to enhance your skills and network."
-    />
+    <meta name="description" content="Join TALKS, the exclusive community to enhance your skills and network." />
     <meta property="og:title" content="TALKS" />
-    <meta
-      property="og:description"
-      content="Join TALKS and start your journey today. It's an exclusive community to learn and grow."
-    />
-    <meta
-      property="og:image"
-      content="{{ url_for('static', filename='images/icon.png') }}"
-    />
+    <meta property="og:description" content="Join TALKS and start your journey today. It's an exclusive community to learn and grow." />
+    <meta property="og:image" content="{{ url_for('static', filename='images/icon.png') }}" />
     <meta property="og:url" content="{{ url_for('landing') }}" />
     <meta name="TALKS:card" content="summary_large_image" />
     <meta name="TALKS:title" content="TALKS" />
-    <meta
-      name="TALKS:description"
-      content="Join TALKS today and engage with community of mindful people!"
-    />
-    <meta
-      name="TALKS:image"
-      content="{{ url_for('static', filename='images/icon.png') }}"
-    />
-    <link
-      rel="icon"
-      href="{{ url_for('static', filename='images/icon.png') }}"
-      type="image/x-icon"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/landing_page.css') }}"
-    />
+    <meta name="TALKS:description" content="Join TALKS today and engage with community of mindful people!" />
+    <meta name="TALKS:image" content="{{ url_for('static', filename='images/icon.png') }}" />
+    <link rel="icon" href="{{ url_for('static', filename='images/icon.png') }}" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
     <title>TALKS</title>
-    <!-- <link rel="stylesheet" href="styles.css" /> -->
-    <head>
-      <!-- Google Fonts -->
-      <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap"
-        rel="stylesheet"
-      />
-    </head>
 
-    <!-- Font Awesome CDN -->
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&family=Playfair+Display:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+      :root {
+        --ink: #0e0e0e;
+        --ink2: #1a1a1a;
+        --muted: #888;
+        --accent: #e8f04a;
+        --accent-dark: #c8d030;
+        --surface: #161616;
+        --surface2: #1e1e1e;
+        --border: rgba(255,255,255,0.08);
+        --serif: 'Instrument Serif', Georgia, serif;
+        --sans: 'DM Sans', system-ui, sans-serif;
+      }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        font-family: var(--sans);
+        background: var(--ink);
+        color: #e8e8e6;
+        font-size: 15px;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* ── NAV ── */
+      .header {
+        position: sticky; top: 0; z-index: 100;
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 18px 40px;
+        border-bottom: 1px solid var(--border);
+        background: rgba(14,14,14,0.92);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+      }
+      .logo {
+        font-family: var(--serif);
+        font-size: 22px;
+        letter-spacing: -0.02em;
+        color: var(--accent);
+      }
+      .nav-links { display: flex; gap: 32px; align-items: center; }
+      .nav-links a {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 400;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover { color: #e8e8e6; }
+      .nav-cta {
+        background: var(--accent) !important;
+        color: var(--ink) !important;
+        padding: 8px 20px !important;
+        border-radius: 4px !important;
+        font-weight: 500 !important;
+        text-transform: none !important;
+        letter-spacing: 0 !important;
+        font-size: 13px !important;
+      }
+      .nav-cta:hover { background: var(--accent-dark) !important; color: var(--ink) !important; }
+
+      /* ── HERO ── */
+      .hero-section {
+        min-height: 92vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 80px 40px 64px;
+        position: relative;
+        overflow: hidden;
+        border-bottom: 1px solid var(--border);
+      }
+      .hero-grid {
+        position: absolute; inset: 0;
+        background-image:
+          linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+        background-size: 48px 48px;
+        -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 100%);
+        mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 100%);
+        pointer-events: none;
+      }
+      .hero-label {
+        display: inline-flex; align-items: center; gap: 8px;
+        font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
+        text-transform: uppercase; color: var(--muted);
+        margin-bottom: 28px;
+        position: relative;
+      }
+      .hero-label .dot {
+        display: inline-block; width: 6px; height: 6px;
+        border-radius: 50%; background: var(--accent);
+        animation: blink 2s ease-in-out infinite;
+      }
+      @keyframes blink {
+        0%,100% { opacity:1; transform: scale(1); }
+        50% { opacity:0.3; transform: scale(0.6); }
+      }
+      h1.hero-title {
+        font-family: var(--serif);
+        font-size: clamp(52px, 8vw, 96px);
+        font-weight: 400;
+        line-height: 0.95;
+        letter-spacing: -0.03em;
+        color: #f0ede6;
+        max-width: 820px;
+        margin-bottom: 32px;
+        position: relative;
+      }
+      h1.hero-title em {
+        font-style: italic;
+        color: var(--accent);
+      }
+      .hero-sub {
+        max-width: 460px;
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.75;
+        margin-bottom: 48px;
+        position: relative;
+      }
+      .hero-actions { display: flex; align-items: center; gap: 16px; position: relative; }
+      .btn-primary {
+        background: var(--accent);
+        color: var(--ink);
+        padding: 13px 28px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 14px;
+        transition: background 0.2s, transform 0.15s;
+        display: inline-block;
+      }
+      .btn-primary:hover { background: var(--accent-dark); transform: translateY(-1px); }
+      .btn-ghost {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 14px;
+        display: flex; align-items: center; gap: 6px;
+        transition: color 0.2s;
+      }
+      .btn-ghost:hover { color: #e8e8e6; }
+      .user-count {
+        position: absolute; right: 40px; bottom: 64px;
+        text-align: right;
+      }
+      .user-count .num {
+        font-family: var(--serif);
+        font-size: 52px;
+        font-style: italic;
+        color: #f0ede6;
+        line-height: 1;
+        display: block;
+      }
+      .user-count .num span { color: var(--accent); }
+      .user-count .label {
+        font-size: 11px; color: var(--muted);
+        letter-spacing: 0.1em; text-transform: uppercase;
+        margin-top: 6px; display: block;
+      }
+
+      /* ── TICKER ── */
+      .ticker-wrap {
+        border-bottom: 1px solid var(--border);
+        overflow: hidden; padding: 13px 0;
+        background: var(--ink);
+      }
+      .ticker {
+        display: flex; gap: 48px;
+        animation: ticker-scroll 22s linear infinite;
+        white-space: nowrap;
+      }
+      @keyframes ticker-scroll {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+      }
+      .ticker-item {
+        display: flex; align-items: center; gap: 10px;
+        font-size: 11px; color: var(--muted);
+        letter-spacing: 0.1em; text-transform: uppercase;
+        flex-shrink: 0;
+      }
+      .ticker-item::before {
+        content: ''; display: block;
+        width: 4px; height: 4px; border-radius: 50%;
+        background: var(--accent); opacity: 0.5;
+      }
+
+      /* ── FEATURES ── */
+      .features-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1px;
+        background: var(--border);
+      }
+      .feat-card {
+        background: var(--ink);
+        padding: 56px 48px;
+        transition: background 0.3s;
+        cursor: default;
+      }
+      .feat-card:hover { background: var(--surface); }
+      .feat-icon {
+        width: 40px; height: 40px; margin-bottom: 28px;
+        border: 1px solid var(--border); border-radius: 8px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 18px; color: var(--muted);
+      }
+      .feat-icon.accent { border-color: var(--accent); color: var(--accent); background: rgba(232,240,74,0.06); }
+      .feat-num {
+        font-family: var(--serif);
+        font-size: 13px; font-style: italic;
+        color: var(--muted);
+        margin-bottom: 28px;
+        display: block;
+      }
+      .feat-card h2 {
+        font-family: var(--serif);
+        font-size: 30px; font-weight: 400;
+        letter-spacing: -0.02em;
+        color: #f0ede6;
+        line-height: 1.2;
+        margin-bottom: 14px;
+      }
+      .feat-card p {
+        color: var(--muted); font-size: 14px; line-height: 1.8;
+      }
+
+      /* ── PURPOSE ── */
+      .purpose-section {
+        padding: 120px 40px;
+        border-bottom: 1px solid var(--border);
+      }
+      .purpose-inner { max-width: 760px; margin: 0 auto; }
+      .section-eyebrow {
+        font-size: 11px; font-weight: 500;
+        letter-spacing: 0.14em; text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 32px;
+        display: block;
+      }
+      .purpose-section h2 {
+        font-family: var(--serif);
+        font-size: clamp(36px, 5vw, 56px);
+        font-weight: 400;
+        letter-spacing: -0.025em;
+        color: #f0ede6;
+        line-height: 1.1;
+        margin-bottom: 40px;
+      }
+      .purpose-section p {
+        color: #aaa;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 24px;
+      }
+
+      /* ── CONTACT ── */
+      .contact-section {
+        padding: 120px 40px;
+        background: var(--surface);
+        border-top: 1px solid var(--border);
+      }
+      .contact-inner { max-width: 540px; }
+      .contact-section h2 {
+        font-family: var(--serif);
+        font-size: 48px; font-weight: 400;
+        letter-spacing: -0.025em; color: #f0ede6;
+        margin-bottom: 8px;
+      }
+      .contact-section .sub { color: var(--muted); margin-bottom: 52px; font-size: 14px; }
+
+      .flash-messages { margin-bottom: 24px; }
+      .alert { padding: 12px 16px; border-radius: 4px; font-size: 13px; }
+      .alert-success { background: rgba(232,240,74,0.1); border: 1px solid rgba(232,240,74,0.3); color: var(--accent); }
+      .alert-danger { background: rgba(255,80,80,0.1); border: 1px solid rgba(255,80,80,0.3); color: #ff7070; }
+
+      .contact-section .input-group { margin-bottom: 0; }
+      .contact-section input,
+      .contact-section textarea {
+        width: 100%;
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid var(--border);
+        padding: 18px 0;
+        font-family: var(--sans);
+        font-size: 15px;
+        color: #e8e8e6;
+        outline: none;
+        display: block;
+        transition: border-color 0.2s;
+      }
+      .contact-section input:focus,
+      .contact-section textarea:focus { border-color: rgba(255,255,255,0.28); }
+      .contact-section input::placeholder,
+      .contact-section textarea::placeholder { color: #444; }
+      .contact-section textarea { resize: none; min-height: 110px; }
+      .field-gap { margin-bottom: 8px; }
+
+      .contact-section button,
+      .cta-btn {
+        display: inline-block;
+        margin-top: 40px;
+        background: transparent;
+        border: 1px solid var(--border);
+        color: #e8e8e6;
+        font-family: var(--sans);
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 14px 32px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background 0.2s, border-color 0.2s;
+      }
+      .contact-section button:hover,
+      .cta-btn:hover { background: var(--surface2); border-color: rgba(255,255,255,0.2); }
+
+      /* ── FOOTER ── */
+      .footer {
+        padding: 40px 40px;
+        border-top: 1px solid var(--border);
+        background: var(--ink);
+      }
+      .footer-container {
+        display: flex; align-items: center; justify-content: space-between;
+      }
+      .footer-logo {
+        display: flex; align-items: center; gap: 10px;
+      }
+      .footer-logo h2 {
+        font-family: var(--serif);
+        font-size: 20px; font-weight: 400;
+        color: var(--accent);
+        letter-spacing: -0.02em;
+      }
+      .footer-links { display: flex; gap: 28px; }
+      .footer-links a {
+        color: var(--muted); text-decoration: none;
+        font-size: 11px; letter-spacing: 0.08em;
+        text-transform: uppercase; transition: color 0.2s;
+      }
+      .footer-links a:hover { color: #e8e8e6; }
+      .social-icons { display: flex; gap: 10px; }
+      .social-icons a {
+        width: 34px; height: 34px;
+        border: 1px solid var(--border); border-radius: 4px;
+        display: flex; align-items: center; justify-content: center;
+        color: var(--muted); text-decoration: none; font-size: 13px;
+        transition: border-color 0.2s, color 0.2s;
+      }
+      .social-icons a:hover { border-color: rgba(255,255,255,0.2); color: #e8e8e6; }
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 768px) {
+        .header { padding: 16px 20px; }
+        .nav-links { display: none; }
+        .hero-section { padding: 60px 20px 100px; }
+        .user-count { position: relative; right: auto; bottom: auto; margin-top: 40px; text-align: left; }
+        .features-section { grid-template-columns: 1fr; }
+        .feat-card { padding: 40px 24px; }
+        .purpose-section, .contact-section { padding: 80px 20px; }
+        .footer-container { flex-direction: column; gap: 24px; text-align: center; }
+        .footer-links { flex-wrap: wrap; justify-content: center; }
+      }
+    </style>
   </head>
+
   <!-- Google tag (gtag.js) -->
-  <script
-    async
-    src="https://www.googletagmanager.com/gtag/js?id=G-JNQLWEHE26"
-  ></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JNQLWEHE26"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
+    function gtag() { dataLayer.push(arguments); }
     gtag("js", new Date());
-
     gtag("config", "G-JNQLWEHE26");
   </script>
+
   <body>
-          <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W5KT34BL"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W5KT34BL" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- NAV -->
     <header class="header">
       <div class="logo">TALKS</div>
+      <nav class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#purpose">About</a>
+        <a href="#contact">Contact</a>
+        <a href="{{ url_for('login') }}" class="nav-cta">Join now</a>
+      </nav>
     </header>
-    <!-- Hero Section -->
+
+    <!-- HERO -->
     <header class="hero-section">
-      <div class="overlay"></div>
-      <div class="hero-content">
-        <h1>Connect, Share, and Engage: Your Voice, Your Community</h1>
-        <p>
-          Express, connect, and engage with a community that values real-time
-          conversation.
-        </p>
-
-        <div>
-          <a href="#features" class="cta-btn">Discover More</a>
-          <a href="{{url_for('login')}}" class="cta-btn">Join the community</a>
-        </div>
+      <div class="hero-grid"></div>
+      <div class="hero-label"><span class="dot"></span> Open community</div>
+      <h1 class="hero-title">Where ideas<br><em>find their</em><br>voice.</h1>
+      <p class="hero-sub">Post thoughts, share facts, spark conversations. TALKS is a community built for people who have something to say.</p>
+      <div class="hero-actions">
+        <a href="{{ url_for('login') }}" class="btn-primary">Start talking →</a>
+        <a href="#features" class="btn-ghost">See how it works ↓</a>
       </div>
-      <div id="user-count-section" class="user-count">
-        With +<span id="user-count">{{user_count}}</span> others
+      <div class="user-count">
+        <span class="num">+<span id="user-count">{{ user_count }}</span><span style="color:var(--accent)">+</span></span>
+        <span class="label">Voices joined</span>
       </div>
-
-      <!-- Floating Dots Animation -->
-      <div class="floating-dots">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-
-      <!-- Wave Effect Below Hero Section -->
-      <div class="hero-wave"></div>
     </header>
 
-    <!-- Features Section -->
+    <!-- TICKER -->
+    <div class="ticker-wrap">
+      <div class="ticker">
+        <div class="ticker-item">Post thoughts</div>
+        <div class="ticker-item">Share facts</div>
+        <div class="ticker-item">Explore hashtags</div>
+        <div class="ticker-item">Like &amp; comment</div>
+        <div class="ticker-item">Find your people</div>
+        <div class="ticker-item">Trending topics</div>
+        <div class="ticker-item">Real conversations</div>
+        <div class="ticker-item">Verified profiles</div>
+        <!-- duplicate for seamless loop -->
+        <div class="ticker-item">Post thoughts</div>
+        <div class="ticker-item">Share facts</div>
+        <div class="ticker-item">Explore hashtags</div>
+        <div class="ticker-item">Like &amp; comment</div>
+        <div class="ticker-item">Find your people</div>
+        <div class="ticker-item">Trending topics</div>
+        <div class="ticker-item">Real conversations</div>
+        <div class="ticker-item">Verified profiles</div>
+      </div>
+    </div>
+
+    <!-- FEATURES -->
     <section id="features" class="features-section">
-      <div class="swiper-container">
-        <div class="swiper-wrapper">
-          <!-- Slide 1 -->
-          <div class="swiper-slide">
-            <img
-              src="../static/images/feature1.png"
-              alt="Analytics"
-              class="feature-image"
-            />
-            <h2>Build Connections That Matter</h2>
-            <p>
-              Join a thriving community where ideas, stories, and perspectives
-              come alive.
-            </p>
-          </div>
-          <!-- Slide 2 -->
-          <div class="swiper-slide">
-            <img
-              src="../static/images/feature2.png"
-              alt="Experience"
-              class="feature-image"
-            />
-            <h2>Express Yourself Freely</h2>
-            <p>
-              Your unique voice deserves to be heard—share, engage, and inspire.
-            </p>
-          </div>
-          <!-- Slide 3 -->
-          <div class="swiper-slide">
-            <img
-              src="../static/images/feature3.png"
-              alt="Integration"
-              class="feature-image"
-            />
-            <h2>A Platform Made for You</h2>
-            <p>
-              Designed for meaningful interactions, authentic expression, and
-              real connections.
-            </p>
-          </div>
-        </div>
+      <div class="feat-card">
+        <div class="feat-icon">✦</div>
+        <span class="feat-num">01</span>
+        <h2>Post without limits</h2>
+        <p>Create, edit, and delete posts freely. Attach hashtags, get discovered, and reach people who care about what you have to say.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon accent">◈</div>
+        <span class="feat-num">02</span>
+        <h2>Engage in real threads</h2>
+        <p>Comments and likes on every post. Real discourse, not just reactions — follow threads that matter and surface the best responses.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">❋</div>
+        <span class="feat-num">03</span>
+        <h2>Ride trending topics</h2>
+        <p>Hashtags pull conversations together. See what's hot right now and add your voice to discussions shaping the community.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">◉</div>
+        <span class="feat-num">04</span>
+        <h2>Own your profile</h2>
+        <p>Bio, settings, verified identity via email. Your space is yours — customise, grow, and build a presence that reflects who you are.</p>
       </div>
     </section>
 
-    <!-- About Section -->
+    <!-- PURPOSE -->
     <section id="purpose" class="purpose-section">
-      <div class="container">
-        <h2 class="section-title">Our Purpose</h2>
-        <div class="purpose-content">
-          <p>
-            TALKS is an exclusive community aimed at empowering individuals by
-            providing a platform for learning, networking, and growth. Our
-            mission is to connect like-minded people and foster discussions that
-            elevate skills, spark new ideas, and open opportunities.
-          </p>
-          <p>
-            Whether you're a professional, student, or enthusiast, TALKS is your
-            space to share knowledge, collaborate, and explore new horizons. We
-            believe in the power of dialogue to drive change, spark innovation,
-            and build meaningful relationships.
-          </p>
-        </div>
+      <div class="purpose-inner">
+        <span class="section-eyebrow">Our purpose</span>
+        <h2>Built for people who think out loud.</h2>
+        <p>TALKS is an exclusive community aimed at empowering individuals by providing a platform for learning, networking, and growth. Our mission is to connect like-minded people and foster discussions that elevate skills, spark new ideas, and open opportunities.</p>
+        <p>Whether you're a professional, student, or enthusiast, TALKS is your space to share knowledge, collaborate, and explore new horizons. We believe in the power of dialogue to drive change, spark innovation, and build meaningful relationships.</p>
       </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- CONTACT -->
     <section id="contact" class="contact-section">
-      <div class="container">
-        <h2 class="section-title">Contact Us</h2>
-        <div class="contact-form">
-          {% with messages = get_flashed_messages(with_categories=True) %} {% if
-          messages %}
-          <div class="flash-messages">
-            {% for category, message in messages %}
-            <p class="alert alert-{{ category }}">{{ message }}</p>
-            {% endfor %}
+      <div class="contact-inner">
+        <h2>Say hello.</h2>
+        <p class="sub">Got a question, suggestion, or just want to reach out?</p>
+
+        {% with messages = get_flashed_messages(with_categories=True) %}
+          {% if messages %}
+            <div class="flash-messages">
+              {% for category, message in messages %}
+                <p class="alert alert-{{ category }}">{{ message }}</p>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %}
+
+        <form action="{{ url_for('send_message') }}" method="post">
+          <div class="field-gap input-group">
+            <input type="text" name="name" placeholder="Your name" required />
           </div>
-          {% endif %} {% endwith %}
-          <form action="{{ url_for('send_message') }}" method="post">
-            <div class="input-group">
-              <input type="text" name="name" placeholder="Your Name" required />
-            </div>
-            <div class="input-group">
-              <input
-                type="email"
-                name="email"
-                placeholder="Your Email"
-                required
-              />
-            </div>
-            <div class="input-group">
-              <textarea
-                name="message"
-                rows="5"
-                placeholder="Your Message"
-                required
-              ></textarea>
-            </div>
-            <button type="submit" class="cta-btn">Send Message</button>
-          </form>
-        </div>
+          <div class="field-gap input-group">
+            <input type="email" name="email" placeholder="Email address" required />
+          </div>
+          <div class="field-gap input-group">
+            <textarea name="message" rows="5" placeholder="Your message" required></textarea>
+          </div>
+          <button type="submit">Send message →</button>
+        </form>
       </div>
     </section>
 
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer class="footer">
       <div class="footer-container">
         <div class="footer-logo">
-          <img
-            width="30px"
-            src="{{ url_for('static', filename='images/icon.png') }}"
-            alt="TALKS Logo"
-          />
+          <img width="24px" src="{{ url_for('static', filename='images/icon.png') }}" alt="TALKS Logo" />
           <h2>TALKS</h2>
         </div>
         <div class="footer-links">
@@ -246,94 +545,15 @@
           <a href="{{ url_for('privacy_policy') }}">Privacy Policy</a>
         </div>
         <div class="social-icons">
-          <a href="https://www.youtube.com/@talks-site" target="_blank" class="facebook">
+          <a href="https://www.youtube.com/@talks-site" target="_blank" title="YouTube">
             <i class="fab fa-youtube"></i>
           </a>
-          <a href="https://www.instagram.com/talks.site" target="_blank" class="instagram">
+          <a href="https://www.instagram.com/talks.site" target="_blank" title="Instagram">
             <i class="fab fa-instagram"></i>
           </a>
         </div>
       </div>
     </footer>
-    <!-- Swiper JS -->
-    <script type="module">
-      import Swiper from "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs";
-      document.addEventListener("DOMContentLoaded", function () {
-        const swiper = new Swiper(".swiper-container", {
-          direction: "horizontal", // Slide direction
-          loop: false, // Disable looping
-          autoplay: false, // Disable autoplay
-          speed: 1000, // Slide transition speed in ms
-        });
 
-        let lastScrollTime = 0; // Track time of the last scroll
-        const scrollDelay = 500; // Minimum time between scroll events (in ms)
-        let isInFeatureSection = false; // Track if we are in the feature section
-
-        // Intersection Observer to detect when the "feature" section is in view
-        const featureSection = document.getElementById("features");
-        const observer = new IntersectionObserver(
-          ([entry]) => {
-            if (entry.isIntersecting) {
-              isInFeatureSection = true; // Enable scrolling when in view
-            } else {
-              isInFeatureSection = false; // Disable scrolling when out of view
-            }
-          },
-          { threshold: 0.5 } // Trigger when 50% of the section is in view
-        );
-        observer.observe(featureSection);
-
-        window.addEventListener("wheel", (e) => {
-          if (!isInFeatureSection) return; // Only respond to scroll if in feature section
-
-          const currentTime = Date.now();
-
-          // Throttle scroll event to trigger slide change only after a delay
-          if (currentTime - lastScrollTime > scrollDelay) {
-            const scrollDirection = e.deltaY > 0 ? "down" : "up"; // Determine scroll direction
-
-            if (scrollDirection === "down") {
-              swiper.slideNext(); // Move to the next slide
-            } else if (scrollDirection === "up") {
-              swiper.slidePrev(); // Move to the previous slide
-            }
-
-            lastScrollTime = currentTime; // Update the last scroll time
-            e.preventDefault(); // Prevent default scroll behavior
-          }
-        }, {passive:false});
-      });
-    </script>
-
-    <script>
-      // script.js
-
-      document.addEventListener("DOMContentLoaded", function () {
-        const fadeElements = document.querySelectorAll(".fade-in");
-
-        const observerOptions = {
-          threshold: 0.3, // Adjust this threshold to control when elements fade in
-        };
-
-        const fadeInOnScroll = (entries, observer) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-              observer.unobserve(entry.target); // Optional: unobserve to prevent re-triggering
-            }
-          });
-        };
-
-        const observer = new IntersectionObserver(
-          fadeInOnScroll,
-          observerOptions
-        );
-
-        fadeElements.forEach((el) => {
-          observer.observe(el);
-        });
-      });
-    </script>
   </body>
 </html>
